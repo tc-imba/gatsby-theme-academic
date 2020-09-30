@@ -9,10 +9,11 @@ module.exports = {
   disqusScript: process.env.DISQUS_SCRIPT || 'https://rolwinreevan.disqus.com/embed.js',
   pages: {
     home: '/',
-    blog: 'blog',
+    posts: 'posts',
     contact: 'contact',
     resume: 'resume',
     tag: 'tags',
+    publications: 'publications',
   },
   social: {
     github: 'https://github.com/rolwin100',

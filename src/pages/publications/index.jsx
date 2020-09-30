@@ -5,30 +5,30 @@ import { Layout, Row, Col } from 'antd';
 import Header from '../../components/PageLayout/Header';
 
 import SidebarWrapper from '../../components/PageLayout/Sidebar';
-import PostCard from '../../components/PostCard';
+import PublicationCard from '../../components/PublicationCard';
 import SEO from '../../components/Seo';
 
-const Blog = ({ data }) => (
+const Publications = ({ data }) => (
   <Layout className="outerPadding">
     <Layout className="container">
       <Header />
       <SEO
-        title="Blog"
+        title="Publications"
         description="I like blogging about various web technologies and other stuff related to
           javascript and other trends like graphql, prisma etc. This blog expresses my views of various technologies
           and scenarios I have come across in realtime."
-        path="blog"
+        path="publications"
       />
       <SidebarWrapper>
         <div className="marginTopTitle">
-          <h1 className="titleSeparate">Blog</h1>
+          <h1 className="titleSeparate">Publications</h1>
         </div>
         <Row gutter={[20, 20]}>
           {
             data.allMarkdownRemark && data.allMarkdownRemark.edges.map((val, key) => (
               // eslint-disable-next-line react/no-array-index-key
-              <Col key={key} xs={24} sm={24} md={12} lg={8}>
-                <PostCard data={val} />
+              <Col key={key} xs={24} sm={24} md={24} lg={24}>
+                <PublicationCard data={val} />
               </Col>
             ))
           }
@@ -38,7 +38,7 @@ const Blog = ({ data }) => (
   </Layout>
 );
 
-Blog.propTypes = {
+Publications.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
       edges: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
@@ -74,4 +74,4 @@ export const query = graphql`
   }
 `;
 
-export default Blog;
+export default Publications;

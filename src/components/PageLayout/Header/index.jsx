@@ -36,14 +36,19 @@ export default () => {
                 About
               </Link>
             </li>
+            {/* <li className={style.navItem}> */}
+            {/*  <Link to="/contact" onClick={toggleMenu} activeClassName={style.anchorActive}> */}
+            {/*    Contact */}
+            {/*  </Link> */}
+            {/* </li> */}
             <li className={style.navItem}>
-              <Link to="/contact" onClick={toggleMenu} activeClassName={style.anchorActive}>
-                Contact
+              <Link to="/publications" onClick={toggleMenu} activeClassName={style.anchorActive}>
+                Publications
               </Link>
             </li>
             <li className={style.navItem}>
-              <Link to="/blog" onClick={toggleMenu} activeClassName={style.anchorActive}>
-                Blog
+              <Link to="/posts" onClick={toggleMenu} activeClassName={style.anchorActive}>
+                Posts
               </Link>
             </li>
             <li className={style.navItem}>
