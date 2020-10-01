@@ -2,9 +2,9 @@
 title: Center aligning content with CSS and flex-box
 tags: [ html, css, reactjs ]
 date: 2020-05-15T05:25:44.226Z
-path: blog/center-align-things-with-css
+path: publications/center-align-things-with-css
 cover: ./flexbox-css.jpg
-excerpt: Many a time I noticed that people find it very difficult to align content to the center either vertically or horizontally using CSS. So let's see few ways in how you can align content with css.  
+excerpt: Many a time I noticed that people find it very difficult to align content to the center either vertically or horizontally using CSS. So let's see few ways in how you can align content with css.
 ---
 
 Many a time I noticed that people find it very difficult to align content to the center either vertically or horizontally using CSS 😐.
@@ -136,12 +136,12 @@ Suppose you want to align a `div` horizontally to the center of the parent eleme
             height: 100px;
             background-color: blueviolet;
         }
-      
+
     </style>
     <body>
           <div class="container">
               <div class="box"></div>
-          </div>  
+          </div>
     </body>
 </html>
 
@@ -152,7 +152,7 @@ Suppose you want to vertically and horizontally align a `div` to the center of t
 
 ` html, body { height: 100%; }` and give some height to the parent element.
 
-That's it your content should be vertically and horizontally aligned to the parent element. The below snippet shows how a div can be aligned to the center. 
+That's it your content should be vertically and horizontally aligned to the parent element. The below snippet shows how a div can be aligned to the center.
 
 ```html
 <!DOCTYPE html>
@@ -179,12 +179,12 @@ That's it your content should be vertically and horizontally aligned to the pare
             height: 100px;
             background-color: blueviolet;
         }
-      
+
     </style>
     <body>
           <div class="container">
               <div class="box"></div>
-          </div>  
+          </div>
     </body>
 </html>
 
@@ -192,4 +192,4 @@ That's it your content should be vertically and horizontally aligned to the pare
 
 Congrats we are at the end of this post. I hope you enjoyed the topic.
 
- 
+

@@ -2,7 +2,7 @@
 title: How to build your own compiler ? ( The Worlds smallest compiler )
 tags: [ javascript ]
 date: 2020-04-01T05:25:44.226Z
-path: blog/how-to-build-your-own-compiler
+path: posts/how-to-build-your-own-compiler
 cover: ./compiler.png
 excerpt: Compilers are there everywhere in our day to day use. Most developers tend to ignore it because they feel only the nerdiest of the geeks can code it. Let's build the worlds smallest compiler to understand how compilers work.
 ---
@@ -22,7 +22,7 @@ For example if we have two functions `add` and `subtract` they would be written 
 | **2 + (4 - 2)** | `(add 2 (subtract 4 2))` | `add(2, subtract(4, 2))`|
 
 ##
-Easy-pezzy right? 
+Easy-pezzy right?
 
 OK good!! we will be using the above example as the input for our compiler.
 
@@ -31,7 +31,7 @@ OK good!! we will be using the above example as the input for our compiler.
 So the compiler is a tool that just converts code from one programming language into another programming language without changing the actual meaning of the code. There is also something called a transpiler you may have come across while building JS application with typescript. A transpiler is also a compiler. So the difference between a compiler and a transpiler is that compiler converts code from a programming language to byte codes which humans can't understand. Whereas a transpiler is a source-to-source compiler i.e it converts code from one language to another and the compiled code is still human-readable.
 
 
-## stages in a compiler 
+## stages in a compiler
 
 Most of the compilers have three stages on a high level design i.e `Parsing`, `Transformation` and `Code Generation`.
 
@@ -96,7 +96,7 @@ Thats it these are the three main stages of a compiler. 😃
         // Take the current character
         let char = input[current];
 
-        // The first thing we want to check for is an open parenthesis. This will 
+        // The first thing we want to check for is an open parenthesis. This will
         // later we will use this for `CallExpression`. As of now we will only take care
         // of the character. if we come across one we push them in the token array with type
         if (char === '(') {
@@ -115,7 +115,7 @@ Thats it these are the three main stages of a compiler. 😃
             continue;
         }
 
-        // Let's check for whitespaces. We need them because whitespace exists to 
+        // Let's check for whitespaces. We need them because whitespace exists to
         // separate characters, but it isn't actually important for us to store as a token.
         // We would only throw it out later.
         let WHITESPACE = /\s/;
@@ -124,7 +124,7 @@ Thats it these are the three main stages of a compiler. 😃
             continue;
         }
 
-        // Next let us take care of number tokens. It's a bit different because a number can 
+        // Next let us take care of number tokens. It's a bit different because a number can
         // have a continuous sequence and we need to  capture the entire sequence of characters
         // as one token.
         //
@@ -139,8 +139,8 @@ Thats it these are the three main stages of a compiler. 😃
             // characters to.
             let value = '';
 
-            // Loop through the characters in the sequence until we encounter a character that 
-            // is not a number. Push each character that is a number to our `value` and 
+            // Loop through the characters in the sequence until we encounter a character that
+            // is not a number. Push each character that is a number to our `value` and
             // incrementing `current` as we go.
             while (NUMBERS.test(char)) {
                 value += char;
@@ -151,13 +151,13 @@ Thats it these are the three main stages of a compiler. 😃
             continue;
         }
 
-        // So what about strings then we need to parse the strings as well right. So how do we 
+        // So what about strings then we need to parse the strings as well right. So how do we
         // do it 🤷‍♀️. You guessed it right we need to look for the start and end of a double quote.
         //
         //   (concat "foo" "bar")
         //            ^^^   ^^^ string tokens
         //
-        // The same logic can be applied which we used for numbers numberWe'll start by 
+        // The same logic can be applied which we used for numbers numberWe'll start by
         // checking for the opening quote:
         if (char === '"') {
             // value variable to insert the characters to form the string.
@@ -191,7 +191,7 @@ Thats it these are the three main stages of a compiler. 😃
                 value += char;
                 char = input[++current];
             }
-            
+
             tokens.push({ type: 'name', value });
             continue;
         }
@@ -274,7 +274,7 @@ Thats it these are the three main stages of a compiler. 😃
                 // If we have one, we'll increment `current`.
                 current++;
 
-                // Return a new AST node called `NumberLiteral` and set value to the 
+                // Return a new AST node called `NumberLiteral` and set value to the
                 // value of our token.
                 return { type: 'NumberLiteral', value: token.value };
             }
@@ -410,7 +410,7 @@ Thats it these are the three main stages of a compiler. 😃
         type: 'CallExpression',
         name: 'subtract',
         params: [
-            // nested nodes 
+            // nested nodes
         ],
     }
     ```
@@ -443,7 +443,7 @@ Thats it these are the three main stages of a compiler. 😃
             }]
         }]
     }
-    ``` 
+    ```
     So for the `AST` above we would go like:
 
     1. Program - starting at the top level of the AST
@@ -485,7 +485,7 @@ Thats it these are the three main stages of a compiler. 😃
             enter(node, parent) {},
             exit(node, parent) {},
         }
-    }; 
+    };
     ```
 
     Looks good now. Now lets write the snippet for our traverser.
@@ -518,7 +518,7 @@ Thats it these are the three main stages of a compiler. 😃
     */
     function traverser(ast, visitor) {
 
-        // Iterates over the array and call the next function traverseNode with reference 
+        // Iterates over the array and call the next function traverseNode with reference
         // to the parent.
         function traverseArray(array, parent) {
             array.forEach(child => {
@@ -542,7 +542,7 @@ Thats it these are the three main stages of a compiler. 😃
             // Next we are going to split things up by the current node type.
             switch (node.type) {
 
-                // Let's start with the 'Program' array and then call the traverseArray 
+                // Let's start with the 'Program' array and then call the traverseArray
                 // method for the body node
                 case 'Program':
                     traverseArray(node.body, node);
@@ -571,7 +571,7 @@ Thats it these are the three main stages of a compiler. 😃
             }
         }
 
-        // Let's call the traverserNode function with the parent parameter as null 
+        // Let's call the traverserNode function with the parent parameter as null
         // because the top level does not have a parent
         traverseNode(ast, null);
     }
@@ -684,14 +684,14 @@ Thats it these are the three main stages of a compiler. 😃
                         };
 
                         // Let's create a new context for the original 'CallExpression' so that we can push
-                        // arguments 
+                        // arguments
                         node._context = expression.arguments;
 
                         // Ceck the parent node is a `CallExpression` if it is not then
                         if (parent.type !== 'CallExpression') {
 
-                            // wrap our `CallExpression` node with an `ExpressionStatement`. 
-                            // This is done because the top level `CallExpression` in JavaScript are actually 
+                            // wrap our `CallExpression` node with an `ExpressionStatement`.
+                            // This is done because the top level `CallExpression` in JavaScript are actually
                             // statements.
                             expression = {
                                 type: 'ExpressionStatement',
@@ -709,7 +709,7 @@ Thats it these are the three main stages of a compiler. 😃
             return newAst;
         }
 
-        // export transformer 
+        // export transformer
         module.exports = transformer;
     ```
 
@@ -730,7 +730,7 @@ Thats it these are the three main stages of a compiler. 😃
         */
 
         /**
-        * Our CodeGenerator is going to call itself recursively to to print a string 
+        * Our CodeGenerator is going to call itself recursively to to print a string
         * The code generator is quite straight forward to understand
         */
 
@@ -751,7 +751,7 @@ Thats it these are the three main stages of a compiler. 😃
                     );
 
                 // For `CallExpression` we will print the `callee`, and call the codeGenerator
-                // recursively so that the end result of recursion is going to be a string 
+                // recursively so that the end result of recursion is going to be a string
                 // the arguments are concatenated as shown below
                 case 'CallExpression':
                     return (

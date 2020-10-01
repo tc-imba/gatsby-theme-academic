@@ -1,9 +1,21 @@
 module.exports = {
   pathPrefix: '',
   siteUrl: 'https://rolwinreevan.com',
-  siteTitle: 'Rolwin Reevan',
+  siteTitle: 'Yihao Liu',
   siteDescription: 'Logbook of a software developer',
-  author: 'Rolwin Reevan',
+  author: 'Yihao Liu',
+  introduction: [
+    'My name is Yihao Liu, ...',
+    'My interests are in ...',
+  ],
+  avatar: 'avatar.png',
+  professions: [
+    'Ph.D Student',
+    'Full Stack Developer',
+  ],
+  birthday: 'June 15, 1997',
+  location: 'Singapore',
+  email: 'liuyh970615@gmail.com',
   postsForArchivePage: 3,
   defaultLanguage: 'en',
   disqusScript: process.env.DISQUS_SCRIPT || 'https://rolwinreevan.disqus.com/embed.js',
@@ -24,6 +36,26 @@ module.exports = {
   },
   contactFormUrl: process.env.CONTACT_FORM_ENDPOINT || 'https://getform.io/f/09a3066f-c638-40db-ad59-05e4ed71e451',
   googleAnalyticTrackingId: process.env.GA_TRACKING_ID || '',
+  experience: [{
+    date: 'Jan 2020 - Present',
+    icon: 'book',
+    title: 'Ph.D in Computer Science',
+    location: 'Nanyang Technological University, Singapore',
+  }, {
+    date: 'Sept 2015 - Aug 2019',
+    icon: 'book',
+    title: 'B.S.E. in Electrical and Computer Engineering',
+    location: 'Shanghai Jiao Tong University, China',
+  }, {
+    date: 'Sept 2008 - June 2015',
+    icon: 'book',
+    title: 'Middle School',
+    location: 'Shanghai Southwest Weiyu Middle School, China',
+  }, {
+    date: 'June 1997',
+    title: 'Born',
+    location: 'Shanghai, China',
+  }],
   tags: {
     javascript: {
       name: 'javascript',

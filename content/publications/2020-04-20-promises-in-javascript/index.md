@@ -2,9 +2,9 @@
 title: Working with promises in Javascript
 tags: [ javascript, typescript, nodejs, reactjs ]
 date: 2020-04-20T05:25:44.226Z
-path: blog/promises-in-javascript
+path: publications/promises-in-javascript
 cover: ./javascript.png
-excerpt: Let's talk about promises in javascript. What exactly is a promise in javascript and how to handle promises. This article will talk about the different methods to resolve promises.  
+excerpt: Let's talk about promises in javascript. What exactly is a promise in javascript and how to handle promises. This article will talk about the different methods to resolve promises.
 ---
 
 Promises in `Javascript` is a very interesting topic and a bit complicated topic as well. Many a time we come across promises but we fail to identify them. Promises are very common in `Javascript` programming.
@@ -32,23 +32,23 @@ A promise can be any of the below three states at a point of time:
 3. **rejected** - The state when a promise fails due to some error or some condition.
 
 ```javascript
-    const promise = new Promise((resolve, reject) => { 
+    const promise = new Promise((resolve, reject) => {
         try{
-            setTimeout(() => { 
-                resolve('resolved promise'); 
-            }, 5000); 
+            setTimeout(() => {
+                resolve('resolved promise');
+            }, 5000);
         }
         catch (e) {
             reject(e)
         }
-    }); 
+    });
 
     // this will print - 'resolved promise'
     promise.then((val) => console.log(val))
 ```
 The setTimeout function in the above code will be executed after 5 seconds. So the promise will settle after 5 seconds. Hence we can say that the promise will be resolved after 5 seconds. After that  ` promise.then((val) => console.log(val))` block will be executed and will return the output `resolved promise`.
 
-The `Promise` object takes in executor function as a parameter. 
+The `Promise` object takes in executor function as a parameter.
 
 ```javascript
     new Promise(executor_function)
@@ -69,7 +69,7 @@ The executor function has two parameters again `resolve` or `reject`. Let's say 
     })
 ```
 
-## Promise methods 
+## Promise methods
 
 1. ### Promise.all()
 
@@ -83,7 +83,7 @@ The executor function has two parameters again `resolve` or `reject`. Let's say 
         })
 
         Promise.all([promise1, promise2, promise3 ]).then(
-            /** 
+            /**
             * will console the values after 2 seconds
             * [32, 1234, 'resolve something']
             */
@@ -115,8 +115,8 @@ The executor function has two parameters again `resolve` or `reject`. Let's say 
     *
     * output for the above code:
     *
-    * Array [   Object { status: "fulfilled", value: 'resolved value' }, 
-    *           Object { status: "fulfilled", value: 23 }, 
+    * Array [   Object { status: "fulfilled", value: 'resolved value' },
+    *           Object { status: "fulfilled", value: 23 },
     *           Object { status: "rejected", reason: "i will be rejected" }
     *       ]
     *
@@ -140,7 +140,7 @@ The executor function has two parameters again `resolve` or `reject`. Let's say 
         });
 
         Promise.race([promiseMeApple, promiseMeGrapes]).then(function(value) {
-            //resolved value 
+            //resolved value
             console.log(value);
         });
         // expected output: "🍎"
@@ -149,7 +149,7 @@ The executor function has two parameters again `resolve` or `reject`. Let's say 
 4. ### Promise.resolve()
 
     `Promise.resolve` accepts a value to be returned by the new `Promise` as a parameter and return the new `Promise` with the resolved value.
-    
+
     ```javascript
 
         let melonPromise = Promise.resolve(`🍉`);
@@ -162,7 +162,7 @@ The executor function has two parameters again `resolve` or `reject`. Let's say 
         *
         * This will print 🍉 as output
         */
-        melonPromise.then(val => console.log(val));   
+        melonPromise.then(val => console.log(val));
 
     ```
 
@@ -180,21 +180,21 @@ The executor function has two parameters again `resolve` or `reject`. Let's say 
         /**
         * if u want to console the value of promise then use a callback
         *
-        * This will print 
+        * This will print
         *
-        * : Uncaught (in promise) I don't like Tomatos 🍅 
+        * : Uncaught (in promise) I don't like Tomatos 🍅
         *
         * as output
         */
-        tomatoPromise.then(val => console.log(val));   
+        tomatoPromise.then(val => console.log(val));
 
     ```
-    
+
 ## Application of promises
 
 The main advantage of promises is performing tasks concurrently. With promises we can perform tasks concurrently which will reduce the time significantly.
 
-Let's consider making an API call using `async await` . 
+Let's consider making an API call using `async await` .
 
 ```javascript
 
@@ -203,9 +203,9 @@ Let's consider making an API call using `async await` .
         const pizzaData  = await fetch('/get-api-call-for-pizza-data');
 
         /**
-         * 
+         *
          * some processing with the above data
-         * 
+         *
          */
         const combineBurgerAndPizzaData = [...burgerData, ...pizzaData];
     }

@@ -26,10 +26,12 @@ exports.createPages = ({ actions, graphql }) => {
 
     const { allMarkdownRemark } = result.data;
 
-    /* Post pages */
+    /* Post and Publication pages */
     allMarkdownRemark.edges.forEach(({ node }) => {
+      utils.generateOmittedPostInfo(node);
       // Check path prefix of post
-      if (node.frontmatter.path.indexOf(config.pages.blog) !== 0) {
+      if (node.frontmatter.path.indexOf(config.pages.posts) !== 0
+        && node.frontmatter.path.indexOf(config.pages.publications) !== 0) {
         // eslint-disable-next-line no-throw-literal
         throw `Invalid path prefix: ${node.frontmatter.path}`;
       }
@@ -38,6 +40,7 @@ exports.createPages = ({ actions, graphql }) => {
         path: node.frontmatter.path,
         component: path.resolve('src/templates/post/post.jsx'),
         context: {
+          fileAbsolutePath: node.fileAbsolutePath,
           postPath: node.frontmatter.path,
           translations: utils.getRelatedTranslations(node, allMarkdownRemark.edges),
         },

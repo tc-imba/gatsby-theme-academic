@@ -11,9 +11,9 @@
     margin: 0px;
     aside{
         padding: @padding-margin-val;
-    
+
         .profileAvatar{
-            background-image: url('../../../images/rolwinreevan.jpg');
+            //background-image: url('../../../images/avatar.jpg');
             height: 219px;
             background-size: cover;
             background-repeat: no-repeat;
@@ -21,12 +21,13 @@
             @media screen and (max-width:767px){
                 max-width: 230px;
                 margin: auto;
-                
             }
+            margin: auto;
         }
         .name{
             margin-top:1.4rem;
             h2{
+                font-size: 2rem;
                 font-weight: 200;
                 letter-spacing: 2px;
             }
@@ -35,8 +36,8 @@
                 letter-spacing: 0px;
             }
             .badge {
-                margin-top: 0.5rem;
-                font-size: .837rem;
+                margin: 0.5rem;
+                font-size: 0.9rem;
                 font-weight: 400;
                 border-radius: 10rem;
                 padding: .6rem 1rem;
@@ -56,7 +57,7 @@
                     white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
-    
+
                 }
             }
             .contactBlock {
@@ -79,6 +80,7 @@
                 margin-bottom: .75rem;
             }
             .resumeDownload{
+                margin-top: 2rem;
                 a{
                     padding: .9rem 1rem;
                     text-transform: uppercase;
@@ -117,7 +119,7 @@
         padding: @padding-margin-val;
         padding-top: 0;
     }
-    
+
 }
 
 .sideBar404Radius{

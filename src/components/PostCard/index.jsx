@@ -5,7 +5,9 @@ import style from './postCard.module.less';
 import Utils from '../../utils/pageUtils';
 
 const PostCard = (props) => {
-  const { data: { node: { frontmatter } } } = props;
+  const { data: { node } } = props;
+  Utils.generateOmittedPostInfo(node);
+  const { frontmatter } = node;
 
   return (
     <div className={style.postCard}>

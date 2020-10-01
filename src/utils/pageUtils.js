@@ -81,6 +81,14 @@ const Utils = {
    * @return {string} string with first letter to uppercase
    */
   capitalize: (str) => str[0].toUpperCase() + str.slice(1),
+  generateOmittedPostInfo: (node) => {
+    const regex = /(?<=content\/)(posts|publications)\/.*(?=\/index\.md)/g;
+    const matches = node.fileAbsolutePath.match(regex);
+    if (matches.length === 1 && !node.frontmatter.path) {
+      // eslint-disable-next-line prefer-destructuring
+      node.frontmatter.path = matches[0];
+    }
+  },
 };
 
 module.exports = Utils;

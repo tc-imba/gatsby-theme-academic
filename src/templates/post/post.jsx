@@ -14,6 +14,7 @@ import './highlight-syntax.less';
 import style from './post.module.less';
 
 const Post = ({ data }) => {
+  Utils.generateOmittedPostInfo(data.markdownRemark);
   const { html, frontmatter } = data.markdownRemark;
   const {
     title, cover: { childImageSharp: { fluid } }, excerpt, path,
@@ -50,8 +51,8 @@ const Post = ({ data }) => {
 };
 
 export const pageQuery = graphql`
-  query($postPath: String!) {
-    markdownRemark(frontmatter: { path: { eq: $postPath } }) {
+  query($fileAbsolutePath: String!, $postPath: String!) {
+    markdownRemark(fileAbsolutePath: { eq: $fileAbsolutePath }) {
       html
       timeToRead
       frontmatter {
@@ -68,6 +69,7 @@ export const pageQuery = graphql`
           }
         }
       }
+      fileAbsolutePath
     }
     allMarkdownRemark(
       filter: {

@@ -2,7 +2,7 @@
 title: Code splitting in react with React.lazy() and Suspense
 tags: [ html, css, reactjs ]
 date: 2020-05-21T05:25:44.226Z
-path: blog/code-splitting-in-react
+path: publications/code-splitting-in-react
 cover: ./codesplitting.png
 excerpt: Suppose the bundle size of your project is very huge and you don't want to load everything at once during the initial render you can use code splitting along with React to improve the performance and load time of your application.
 ---
@@ -56,7 +56,7 @@ The component will be loaded only when it will be needed from the server.
 
 ## Using a Lazy Loaded component with React.Suspense
 
-Suppose we are using a lazy-loaded component we need to wrap it with `React.Suspense`. 
+Suppose we are using a lazy-loaded component we need to wrap it with `React.Suspense`.
 
 React 16.6 added a `<Suspense>` component that lets you “wait” for some code to load and declaratively specify a loader or some skeleton while we’re waiting. `React.Suspense` is just like the Error boundaries which we use for our `React` apps.
 
@@ -77,7 +77,7 @@ When the `<AuthComponent/>` is loaded from the server `loading...` is displayed 
 
 ## When to use React.lazy & React.Suspense to perform code splitting?
 
-It can be very tricky to decide when to perform code splitting in an application. Some of the most common use cases I can think of is 
+It can be very tricky to decide when to perform code splitting in an application. Some of the most common use cases I can think of is
 
 1. Code splitting for page Routes.
 2. Opening a popup model

@@ -2,14 +2,14 @@
 title: Why I migrated my website from wordpress to gatsby? (gatsby vs wordpress)
 tags: [ javascript, gatsby, typescript ]
 date: 2020-04-08T05:25:44.226Z
-path: blog/why-i-migrated-my-website-from-wordpress-to-gatsby
+path: publications/why-i-migrated-my-website-from-wordpress-to-gatsby
 cover: ./gatsby-wordpress.jpg
-excerpt: While building a CMS for blogging, worpdress is the most commonly used platform. Gatsby has also topped the list recently. This article talk which one to go for and why I shifted from wordpress to gatsby. Is gatsby better than wordpress is the question I would be answering.  
+excerpt: While building a CMS for blogging, worpdress is the most commonly used platform. Gatsby has also topped the list recently. This article talk which one to go for and why I shifted from wordpress to gatsby. Is gatsby better than wordpress is the question I would be answering.
 ---
 
 [`Wordpress`](https://wordpress.org/) is an awesome 😍 platform for blogging 📖 and dynamic websites that powers more than 29% of the website on the internet 🌐. Previously I used to run my website on Wordpress. But recently I migrated my website and blog from Wordpress to Gatsby.
 
-## So is wordpress bad and I decided to migrate my website 🤔 ? 
+## So is wordpress bad and I decided to migrate my website 🤔 ?
 
 No absolutely not. That would be stupid to say Wordpress is bad. In fact, I believe it is a wonderful platform to build websites without much technical knowledge. `Wordpress` is powered by `PHP`. It's a full-fledged platform that is good for blogging, marketing, creating dynamic websites and even supports eCommerce websites for small businesses. There are many plugins that are available for WordPress for different purposes and can be integrated with it very well.
 
