@@ -1,7 +1,8 @@
 @import (reference) './mixins.less';
+@import (reference) './theme.less';
 body{
   font-size: 16px;
-  background: #f0f2f5;
+  background: @site-background-color;
   overflow-y: scroll;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -103,6 +104,7 @@ ul{
 
 .outerPadding {
   padding: 1.87rem;
+  padding-top: 0;
   @media screen and (max-width: 768px){
     padding: 0.6rem;
   }
@@ -146,4 +148,8 @@ ul{
   font-size: 12px;
 }
 
-
+.fix-title {
+  background-color: white;
+  //padding-top: 2.5em;
+  //margin-bottom: 2.5rem;
+}

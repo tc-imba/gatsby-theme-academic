@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import { Layout } from 'antd';
+import { Affix, Layout } from 'antd';
 
 import Header from '../../components/PageLayout/Header';
 import SidebarWrapper from '../../components/PageLayout/Sidebar';
@@ -20,9 +20,9 @@ const Posts = ({ data }) => (
         path="posts"
       />
       <SidebarWrapper>
-        <div className="marginTopTitle">
+        <Affix offsetTop={130} prefixCls="fix-title">
           <h1 className="titleSeparate">Posts</h1>
-        </div>
+        </Affix>
         <Panel type="posts" data={data} />
       </SidebarWrapper>
     </Layout>

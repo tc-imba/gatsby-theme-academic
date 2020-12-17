@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  Layout, Empty, Row, Col, Input, Alert,
+  Layout, Empty, Row, Col, Input, Alert, Affix,
 } from 'antd';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
@@ -87,7 +87,7 @@ const Post = ({ data }) => {
         />
         <Header />
         <SidebarWrapper>
-          <div className="marginTopTitle">
+          <Affix offsetTop={130} prefixCls="fix-title">
             <h1 className="titleSeparate">{title}</h1>
             <div>
               <div style={{ color: 'rgba(0, 0, 0, 0.45)', marginBottom: '1rem' }}>
@@ -99,6 +99,8 @@ const Post = ({ data }) => {
                 <Img className={style.bannerImg} fluid={fluid} title={excerpt} alt={title} />
               </div>
             ) : null }
+          </Affix>
+          <div>
             { state.locked
               ? (
                 <Empty

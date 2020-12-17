@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { Link } from 'gatsby';
-import { Layout } from 'antd';
+import {
+  Layout, Affix, Col, Row,
+} from 'antd';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
@@ -43,7 +45,7 @@ export default () => {
   };
 
   return (
-    <>
+    <Affix offsetTop={0}>
       <div className={style.circleMenu} role="button" tabIndex="0" onKeyDown={toggleMenu} onClick={toggleMenu}>
         <div className={`${style.hamburger} ${menu ? style.menuIcon : null}`}>
           <div className={style.line} />
@@ -51,6 +53,7 @@ export default () => {
           <div className={style.hamburgerText}>MENU</div>
         </div>
       </div>
+      <div className={style.topPadding} />
       <Layout className={`${style.navWrap} ${menu ? null : style.hidden} ${menu ? style.openMenu : null}`}>
         <div className={style.backgroundDiv}>
           <ul className={style.nav}>
@@ -102,6 +105,14 @@ export default () => {
           </ul>
         </div>
       </Layout>
-    </>
+      <div className="container" style={{ position: 'fixed' }}>
+        <Row>
+          <Col sm={24} md={10} lg={7} />
+          <Col sm={24} md={14} lg={17}>
+            <div className={style.bottomPadding} />
+          </Col>
+        </Row>
+      </div>
+    </Affix>
   );
 };

@@ -88,7 +88,7 @@ const Sidebar = (props) => {
   let domContent = <DomContent />;
   if (width > 997) {
     domContent = (
-      <Affix offsetTop={0}>
+      <Affix offsetTop={120}>
         <DomContent />
       </Affix>
     );
