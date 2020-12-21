@@ -64,7 +64,7 @@ const Panel = (props) => {
   }
 
   return (
-    <>
+    <div style={{marginTop: "2.5rem"}}>
       <section className={style.codeBox}>
         <section className={style.codeBoxTitle}>
           Filters
@@ -104,7 +104,7 @@ const Panel = (props) => {
           })
         }
       </Row>
-    </>
+    </div>
   );
 };
 
