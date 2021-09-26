@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://zhizhuoxin.github.io/sitemap.xml
-Host: https://zhizhuoxin.github.io
+Sitemap: https://tc-imba.github.io/sitemap.xml
+Host: https://tc-imba.github.io
