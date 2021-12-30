@@ -67,21 +67,21 @@ const SelectedResearch = () => {
 
   const tags = data.allTag ? data.allTag.edges : [];
   const tagsMap = _.mapValues(_.keyBy(tags, (tag) => tag.node.name), 'node');
-
-  return (
+  return (data.allMdx && data.allMdx.edges && data.allMdx.edges.length) ? (
     <div className={styles.homepageSection}>
       <h2 style={{ marginBottom: '1rem' }}>Selected Research</h2>
       <Row gutter={[20, 20]}>
-        {
-        data.allMdx && data.allMdx.edges.map((val, key) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <Col key={key} xs={24} sm={24} md={24} lg={24}>
-            <ResearchCard data={val} tagsMap={tagsMap} />
-          </Col>
-        ))
-      }
+        {data.allMdx &&
+          data.allMdx.edges.map((val, key) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <Col key={key} xs={24} sm={24} md={24} lg={24}>
+              <ResearchCard data={val} tagsMap={tagsMap} />
+            </Col>
+          ))}
       </Row>
     </div>
+  ) : (
+    <></>
   );
 };
 
