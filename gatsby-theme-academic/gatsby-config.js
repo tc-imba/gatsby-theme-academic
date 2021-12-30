@@ -11,6 +11,7 @@ module.exports = ({
     tags: 'tags',
     research: 'research',
   },
+  icon = '',
   tagColors = [
     'magenta', 'red', 'volcano', 'orange', 'gold',
     'lime', 'green', 'cyan', 'blue', 'geekblue', 'purple'],
@@ -45,7 +46,8 @@ module.exports = ({
         background_color: '#304CFD',
         theme_color: '#304CFD',
         display: 'standalone',
-        icon: `${__dirname}/src/images/icon.png`, // This path is relative to the root of the site.
+        // icon: `${__dirname}/src/images/icon.png`, // This path is relative to the root of the site.
+        icon,
         legacy: true, // this will add apple-touch-icon links to <head>. Required for
         // versions prior to iOS 11.3.
       },
