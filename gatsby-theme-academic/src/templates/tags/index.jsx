@@ -74,7 +74,6 @@ const TagPage = ({
                   </Col>
                 ))}
               </Row>
-              ,
             </>
           ) : null}
           {posts.length > 0 ? (
@@ -88,7 +87,6 @@ const TagPage = ({
                   </Col>
                 ))}
               </Row>
-              ,
             </>
           ) : null}
         </SidebarWrapper>
