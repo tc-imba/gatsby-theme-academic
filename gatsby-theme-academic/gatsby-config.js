@@ -1,7 +1,4 @@
-import rehypeKatex from 'rehype-katex';
-import remarkMath from 'remark-math';
-
-export default ({
+module.exports = ({
   contentPath = 'content',
   author = '',
   googleAnalyticTrackingId = 'UA-XXXXXXXXX-X',
@@ -66,8 +63,8 @@ export default ({
         resolve: 'gatsby-plugin-mdx',
         options: {
           extensions: ['.mdx', '.md'],
-          remarkPlugins: [remarkMath],
-          rehypePlugins: [rehypeKatex],
+          remarkPlugins: [require('remark-math')],
+          rehypePlugins: [require('rehype-katex')],
           gatsbyRemarkPlugins: [
             // {
             //   resolve: 'gatsby-remark-katex',

@@ -12,6 +12,7 @@ import naclUtil from 'tweetnacl-util';
 import 'github-markdown-css';
 import 'typeface-jetbrains-mono';
 import 'highlight.js/styles/github.css';
+import 'katex/dist/katex.min.css';
 
 import CodeBox from '../../components/CodeBox';
 import Comment from '../../components/Comment';

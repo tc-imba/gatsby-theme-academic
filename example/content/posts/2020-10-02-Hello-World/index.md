@@ -9,3 +9,9 @@ excerpt: I started to build this personal website yesterday.
 
 I started to build this personal website yesterday.
 
+LaTeX test:
+
+$$
+x^3+y^3=z^3
+$$
+
