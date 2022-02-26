@@ -77,16 +77,12 @@ export const query = graphql`
             tags
             excerpt
             priority
-          }
-          fileAbsolutePath
-          fields {
-            slug {
-              links {
-                name
-                url
-              }
+            links {
+              name
+              url
             }
           }
+          fileAbsolutePath
         }
       }
     }

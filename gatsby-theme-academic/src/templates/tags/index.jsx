@@ -31,8 +31,8 @@ const TagPage = ({
   // const tagImage = data.allFile.edges.find((edge) => edge.node.name === tag).node
   //   .childImageSharp.fluid;
   const docs = data.allMdx.edges;
-  const posts = _.filter(docs, (doc) => doc.node.fields.slug.type === 'posts');
-  const research = _.filter(docs, (doc) => doc.node.fields.slug.type === 'research');
+  const posts = _.filter(docs, (doc) => doc.node.frontmatter.type === 'posts');
+  const research = _.filter(docs, (doc) => doc.node.frontmatter.type === 'research');
   const tags = data.allTag ? data.allTag.edges : [];
   const tagsMap = _.mapValues(_.keyBy(tags, (tag) => tag.node.name), 'node');
 
@@ -146,7 +146,7 @@ export const pageQuery = graphql`
     }
     allMdx(
       filter: {
-        fields: { slug: { tags: { in: [$tag] } } }
+        frontmatter: { tags: { in: [$tag] } } 
         fileAbsolutePath: { regex: "/index.md$/" }
       }
       sort: { fields: [frontmatter___date], order: DESC }
@@ -168,15 +168,11 @@ export const pageQuery = graphql`
             title
             tags
             excerpt
-          }
-          fields {
-            slug {
-              links {
+            links {
                 name
                 url
-              }
-              type
             }
+            type
           }
         }
       }

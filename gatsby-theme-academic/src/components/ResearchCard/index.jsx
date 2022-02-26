@@ -18,8 +18,8 @@ import * as style from './researchCard.module.less';
 const ResearchCard = (props) => {
   const { data: { node }, tagsMap } = props;
   const {
-    fields: { slug: { links } }, frontmatter: {
-      title, authors, excerpt, path, date, tags, venue, cover,
+    frontmatter: {
+      title, authors, excerpt, path, date, tags, venue, cover, links,
     },
   } = node;
   const fluid = cover ? cover.childImageSharp.fluid : null;

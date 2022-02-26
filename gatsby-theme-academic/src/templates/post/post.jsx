@@ -1,5 +1,5 @@
 import {
-  Layout, Empty, Row, Col, Input, Alert, Space
+  Layout, Empty, Row, Col, Input, Alert, Space,
 } from 'antd';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
@@ -28,10 +28,11 @@ import './highlight-syntax.less';
 
 const Post = ({ data }) => {
   // console.log(data.mdx.tableOfContents);
-  const { fields: { slug }, frontmatter: { cover }, tableOfContents } = data.mdx;
   const {
-    title, excerpt, path, date, commit, html, nonce, htmlEncrypted, type,
-  } = slug;
+    fields: { slug: { html, nonce, htmlEncrypted } }, frontmatter: {
+      cover, title, excerpt, path, date, commit, type,
+    }, tableOfContents,
+  } = data.mdx;
   const editTime = moment.unix(commit).format('MMM Do YYYY');
   const postTime = Utils.formatDate(date);
 
@@ -171,6 +172,17 @@ export const pageQuery = graphql`
             }
           }
         }
+        title
+        date
+        tags
+        path
+        excerpt
+        links { 
+          name
+          url
+        }
+        commit
+        type
       }
       fileAbsolutePath
       fields {
@@ -178,14 +190,6 @@ export const pageQuery = graphql`
           html
           htmlEncrypted
           nonce
-          title
-          date
-          tags
-          path
-          excerpt
-          links { name }
-          commit
-          type
         }
       }
     }

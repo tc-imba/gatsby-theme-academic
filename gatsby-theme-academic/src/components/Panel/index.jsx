@@ -30,7 +30,7 @@ const Panel = (props) => {
     } else {
       nextSelectedTags.add(tagName);
     }
-    // console.log('You are interested in: ', nextSelectedTags);
+    console.log('You are interested in: ', nextSelectedTags);
     setSelectedTags(nextSelectedTags);
   };
 
@@ -51,13 +51,13 @@ const Panel = (props) => {
 
   if (data.allMdx) {
     data.allMdx.edges.forEach((val) => {
-      if (!val.node || !val.node.fields || !val.node.fields.slug
-        || !val.node.fields.slug.tags) {
+      console.log(val.node);
+      if (!val.node || !val.node.frontmatter || !val.node.frontmatter.tags) {
         // eslint-disable-next-line no-param-reassign
         val.tags = new Set();
       } else {
         // eslint-disable-next-line no-param-reassign
-        val.tags = new Set(val.node.fields.slug.tags);
+        val.tags = new Set(val.node.frontmatter.tags);
       }
     });
   }
