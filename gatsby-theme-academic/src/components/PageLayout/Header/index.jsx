@@ -1,13 +1,70 @@
-import { Layout } from 'antd';
+import { useLocation } from '@reach/router';
 import { Link } from 'gatsby';
+import { withPrefix } from 'gatsby-link';
 import React, { useRef, useState } from 'react';
+import {
+  Affix, IconButton, Button, Tooltip, Container, Header, Whisper,
+} from 'rsuite';
+
+import 'rsuite/dist/rsuite.min.css';
 import '../../../styles/global.less';
 
-import { useWindowSize } from '../../../utils/hooks';
+import { useWindowSize, useTheme } from '../../../utils/hooks';
 import Icon from '../../Icon';
 import LoadableSearch from '../../SearchBar/loadable';
 
 import * as style from './header.module.less';
+
+const ThemeModeSwitch = () => {
+  const [themeMode, setThemeMode] = useTheme();
+  const nextThemeMode = themeMode === 'light' ? 'dark' : 'light';
+
+  const toggleTheme = () => {
+    setThemeMode(nextThemeMode);
+  };
+
+  const tooltip = (
+    <Tooltip>
+      {`Switch to ${nextThemeMode} mode`}
+    </Tooltip>
+  );
+
+  return (
+    <Whisper placement="bottom" controlId="control-id-hover" trigger="hover" speaker={tooltip}>
+      <IconButton
+        size="sm"
+        appearance="subtle"
+        icon={<Icon size="lg" icon={themeMode === 'light' ? 'sun' : 'moon'} fixedWidth />}
+        onClick={toggleTheme}
+      />
+    </Whisper>
+  );
+};
+
+const NavButton = (props) => {
+  const {
+    onClick,
+    to,
+    children,
+  } = props;
+  const location = useLocation();
+  const prefixedTo = withPrefix(to);
+  const isCurrent = encodeURI(prefixedTo) === location.pathname;
+  const appearance = isCurrent ? 'primary' : 'subtle';
+
+  return (
+    <li className={style.navItem}>
+      <Link
+        className={`rs-btn rs-btn-lg rs-btn-${appearance}`}
+        to={to}
+        onClick={onClick}
+        partiallyActive
+      >
+        {children}
+      </Link>
+    </li>
+  );
+};
 
 export default () => {
   const [menu, setMenu] = useState(false);
@@ -38,53 +95,44 @@ export default () => {
   };
 
   return (
-    <>
-      <div className={style.circleMenu} role="button" tabIndex="0" onKeyDown={toggleMenu} onClick={toggleMenu}>
-        <div className={`${style.hamburger} ${menu ? style.menuIcon : null}`}>
-          <div className={style.line} />
-          <div className={style.line} />
-          <div className={style.hamburgerText}>MENU</div>
+    <Affix top={0}>
+      <Header>
+        <div
+          className={style.circleMenu}
+          role="button"
+          tabIndex="0"
+          onKeyDown={toggleMenu}
+          onClick={toggleMenu}
+        >
+          <div className={`${style.hamburger} ${menu ? style.menuIcon : null}`}>
+            <div className={style.line} />
+            <div className={style.line} />
+            <div className={style.hamburgerText}>MENU</div>
+          </div>
         </div>
-      </div>
-      <Layout className={`${style.navWrap} ${menu ? null : style.hidden} ${menu ? style.openMenu : null}`}>
-        <div className={style.backgroundDiv}>
-          <ul className={style.nav}>
-            <li className={style.navItem}>
-              <Link to="/" onClick={toggleMenu} activeClassName={style.anchorActive}>
-                About
-              </Link>
-            </li>
-            {/* <li className={style.navItem}> */}
-            {/*  <Link to="/contact" onClick={toggleMenu} activeClassName={style.anchorActive}> */}
-            {/*    Contact */}
-            {/*  </Link> */}
-            {/* </li> */}
-            <li className={style.navItem}>
-              <Link to="/experience/" onClick={toggleMenu} activeClassName={style.anchorActive}>
-                Experience
-              </Link>
-            </li>
-            <li className={style.navItem}>
-              <Link to="/research/" onClick={toggleMenu} partiallyActive activeClassName={style.anchorActive}>
-                Research
-              </Link>
-            </li>
-            <li className={style.navItem}>
-              <Link to="/posts/" onClick={toggleMenu} partiallyActive activeClassName={style.anchorActive}>
-                Posts
-              </Link>
-            </li>
-            <li className={style.navItem} style={{ marginLeft: '1rem' }}>
-              <LoadableSearch
-                isSearchBarExpanded={isSearchBarExpanded}
-                handleSearchBarToggle={collapseSearch}
-                // ref={searchBarRef}
-              />
-              {isSearchBarExpanded
-                ? <Icon icon="times" fixedWidth />
-                : <Icon icon="search" fixedWidth onMouseDown={expandSearch} />}
-            </li>
-            {/* <li className={style.navItem}>
+        <Container className={`${style.navWrap} ${menu ? null : style.hidden} ${menu ?
+          style.openMenu :
+          null}`}
+        >
+          <div className={style.backgroundDiv}>
+            <ul className={style.nav}>
+              <NavButton to="/" onClick={toggleMenu}>About</NavButton>
+              <NavButton to="/experience/" onClick={toggleMenu}>Experience</NavButton>
+              <NavButton to="/research/" onClick={toggleMenu}>Research</NavButton>
+              <NavButton to="/posts/" onClick={toggleMenu}>Posts</NavButton>
+              <li className={style.navItem}>
+                <ThemeModeSwitch />
+              </li>
+              <li className={style.navItem} style={{ marginLeft: '1rem' }}>
+                <LoadableSearch
+                  isSearchBarExpanded={isSearchBarExpanded}
+                  handleSearchBarToggle={collapseSearch}
+                />
+                {isSearchBarExpanded
+                  ? <Icon icon="times" fixedWidth />
+                  : <Icon icon="search" fixedWidth onMouseDown={expandSearch} />}
+              </li>
+              {/* <li className={style.navItem}>
               <Link to="/tags" onClick={toggleMenu} activeClassName={style.anchorActive}>
                 Tags
               </Link>
@@ -94,9 +142,10 @@ export default () => {
                 Resume
               </Link>
             </li> */}
-          </ul>
-        </div>
-      </Layout>
-    </>
+            </ul>
+          </div>
+        </Container>
+      </Header>
+    </Affix>
   );
 };

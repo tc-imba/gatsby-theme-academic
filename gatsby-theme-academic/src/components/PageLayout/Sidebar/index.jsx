@@ -1,18 +1,17 @@
 // eslint-disable-next-line import/no-unresolved
 import { globalHistory } from '@reach/router';
-import {
-  Affix, Layout, Row, Col, List, Divider,
-} from 'antd';
 import React, { useRef } from 'react';
+import {
+  Container, Content, Row, Col, List, Button, Sidebar, Affix, Grid, FlexboxGrid, Divider, IconButton,
+} from 'rsuite';
 
 import { useWindowSize, useSiteMetadata } from '../../../utils/hooks';
 import Utils from '../../../utils/pageUtils';
 import Icon from '../../Icon';
+import IconListItem from '../../IconListItem';
 import LoadableTableOfContents from '../../TableOfContents/loadable';
 
 import * as style from './sidebar.module.less';
-
-const { Content } = Layout;
 
 const Name = () => {
   const siteMetadata = useSiteMetadata();
@@ -21,7 +20,7 @@ const Name = () => {
     .join(' ');
   const lastName = arr[arr.length - 1];
   return (
-    <Row>
+    <Row gutter={5} type="flex">
       <Col xs={24}>
         <h2 className="centerAlign">
           {firstName}
@@ -30,13 +29,7 @@ const Name = () => {
         </h2>
       </Col>
       {siteMetadata.authorAlternative ? (
-        <Col
-          xs={24}
-          style={{
-            marginTop: '-1rem',
-            marginBottom: '-1rem',
-          }}
-        >
+        <Col xs={24}>
           <h3 className="centerAlign">{siteMetadata.authorAlternative}</h3>
         </Col>
       ) : null}
@@ -49,7 +42,7 @@ const UserInfo = () => {
   return (
     <>
       <div className={`${style.name} centerAlign`}>
-        <Row>
+        <Row type="flex">
           {siteMetadata.professions.map((profession) => (
             <Col
               key={profession}
@@ -64,58 +57,47 @@ const UserInfo = () => {
           ))}
         </Row>
         <div className="centerAlign box" style={{ marginTop: '0.5rem' }}>
-          <Row gutter={[10, 0]}>
+          <FlexboxGrid>
             {siteMetadata.social.map((social) => (
-              <Col key={social.url}>
-                <a
-                  href={social.url}
-                  target="_blank"
-                  label="button"
-                  rel="noopener noreferrer"
-                >
-                  <Icon size="lg" fixedWidth icon={social.icon} />
-                </a>
-              </Col>
+              <FlexboxGrid.Item as={Col} key={social.url} className={style.iconButtonCol}>
+                <IconButton
+                  className={style.iconButton}
+                  size="sm"
+                  appearance="subtle"
+                  icon={(
+                    <a
+                      href={social.url}
+                      target="_blank"
+                      label="button"
+                      rel="noopener noreferrer"
+                    >
+                      <Icon size="lg" fixedWidth icon={social.icon} />
+                    </a>
+                  )}
+                />
+              </FlexboxGrid.Item>
             ))}
-          </Row>
+          </FlexboxGrid>
         </div>
-        <List
-          itemLayout="horizontal"
-          split={false}
+        <div
           style={{
             width: '200px',
             marginBottom: '-0.5rem',
           }}
-          grid={{ gutter: 0 }}
         >
           {siteMetadata.birthday
             ? (
-              <List.Item>
-                <List.Item.Meta
-                  avatar={<Icon size="lg" fixedWidth icon="calendar" />}
-                  title={siteMetadata.birthday}
-                />
-              </List.Item>
+              <IconListItem icon="calendar" title={siteMetadata.birthday} />
             ) : null}
           {siteMetadata.location
             ? (
-              <List.Item>
-                <List.Item.Meta
-                  avatar={<Icon size="lg" fixedWidth icon="map-marker-alt" />}
-                  title={siteMetadata.location}
-                />
-              </List.Item>
+              <IconListItem icon="map-marker-alt" title={siteMetadata.location} />
             ) : null}
           {siteMetadata.email
             ? (
-              <List.Item>
-                <List.Item.Meta
-                  avatar={<Icon size="lg" fixedWidth icon="envelope" />}
-                  title={<a href={`mailto:${siteMetadata.email}`}>{siteMetadata.email}</a>}
-                />
-              </List.Item>
+              <IconListItem icon="envelope" title={<a href={`mailto:${siteMetadata.email}`}>{siteMetadata.email}</a>} />
             ) : null}
-        </List>
+        </div>
       </div>
     </>
   );
@@ -126,7 +108,7 @@ const DomContent = (props) => {
   const siteMetadata = useSiteMetadata();
   const mainSidebar = useRef(null);
   return (
-    <aside>
+    <Sidebar>
       <div ref={mainSidebar}>
         <img
           className={`${style.profileAvatar} centerAlign`}
@@ -148,11 +130,11 @@ const DomContent = (props) => {
       {/* <div className={style.resumeDownload}> */}
       {/*  <a href="../resume.pdf" target="_blank">Download CV</a> */}
       {/* </div> */}
-    </aside>
+    </Sidebar>
   );
 };
 
-const Sidebar = (props) => {
+const SidebarWrapper = (props) => {
   const [width] = useWindowSize();
   const {
     children,
@@ -162,7 +144,7 @@ const Sidebar = (props) => {
   let domContent = <DomContent tableOfContents={tableOfContents} />;
   if (width > 997) {
     domContent = (
-      <Affix offsetTop={0}>
+      <Affix top={100}>
         <DomContent tableOfContents={tableOfContents} />
       </Affix>
     );
@@ -175,20 +157,20 @@ const Sidebar = (props) => {
   }
   return (
     <>
-      <Layout>
+      <Container className={`${style.content} ${style.background}`}>
         <Content className={`${style.content} ${style.background}`}>
-          <Row style={{ marginBottom: '4rem' }}>
-            <Col sm={24} md={10} lg={7} className={style.sidebarContent}>
+          <FlexboxGrid style={{ marginBottom: '4rem' }}>
+            <FlexboxGrid.Item as={Col} xs={24} sm={24} md={8} lg={7} className={style.sidebarContent}>
               {domContent}
-            </Col>
-            <Col sm={24} md={14} lg={17}>
-              <Layout className={`${style.background} ${style.boxContent} borderRadiusSection`}>
+            </FlexboxGrid.Item>
+            <FlexboxGrid.Item as={Col} xs={24} sm={24} md={16} lg={17}>
+              <Container className={`${style.background} ${style.boxContent} borderRadiusSection`}>
                 {children}
-              </Layout>
-            </Col>
-          </Row>
+              </Container>
+            </FlexboxGrid.Item>
+          </FlexboxGrid>
         </Content>
-      </Layout>
+      </Container>
     </>
   );
 };
@@ -196,18 +178,18 @@ const Sidebar = (props) => {
 export const Sidebar404 = (props) => {
   const { children } = props;
   return (
-    <Layout>
+    <Container>
       <Content className={`${style.content} ${style.background} `}>
-        <Row>
+        <Row type="flex">
           <Col sm={24} md={24} lg={24}>
-            <Layout className={`${style.background} ${style.boxContent} ${style.sideBar404Radius}`}>
+            <Container className={`${style.background} ${style.boxContent} ${style.sideBar404Radius}`}>
               {children}
-            </Layout>
+            </Container>
           </Col>
         </Row>
       </Content>
-    </Layout>
+    </Container>
   );
 };
 
-export default Sidebar;
+export default SidebarWrapper;

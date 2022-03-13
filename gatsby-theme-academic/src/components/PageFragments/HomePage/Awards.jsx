@@ -1,4 +1,4 @@
-import { Col, Row } from 'antd';
+import { Col, Row, FlexboxGrid } from 'rsuite';
 import React from 'react';
 import { Timeline, TimelineEvent } from 'react-event-timeline';
 
@@ -9,42 +9,21 @@ import * as styles from './homePage.module.less';
 
 const AwardItem = (data) => {
   const title = (
-    <Row justify="space-between" align="middle">
-      {/* <Col>
-        {data.title}
-      </Col>
-      <Col style={{ fontWeight: '200' }}>
+    <FlexboxGrid justify="space-between">
+      <FlexboxGrid.Item as={Col} md={12} lg={15}>
+        <h6>{data.title}</h6>
+      </FlexboxGrid.Item>
+      <FlexboxGrid.Item as={Col} md={12} lg={9} style={{ fontSize: '12pt' }}>
         {data.date}
-      </Col> */}
-      <Col
-        xs={24}
-        sm={24}
-        md={12}
-        lg={15}
-        style={{
-          fontSize: '12pt',
-          fontWeight: '500',
-        }}
-      >
-        {data.title}
-      </Col>
-      <Col xs={24} sm={24} md={12} lg={9} style={{ fontSize: '12pt' }}>
-        {data.date}
-      </Col>
-    </Row>
+      </FlexboxGrid.Item>
+    </FlexboxGrid>
   );
   return (
-    /*    <List.Item style={{ paddingBottom: '0rem' }}>
-        <List.Item.Meta
-          avatar={<Icon size="lg" fixedWidth icon={data.icon || 'award'} />}
-          title={title}
-        />
-      </List.Item> */
     <TimelineEvent
       title={title}
       style={{
         paddingBottom: '0.8rem',
-        paddingTop: '0.8px',
+        paddingTop: '0.3rem',
       }}
       icon={<Icon size={data.iconSize || 'lg'} fixedWidth icon={data.icon || 'award'} />}
       iconStyle={{ cursor: 'default' }}

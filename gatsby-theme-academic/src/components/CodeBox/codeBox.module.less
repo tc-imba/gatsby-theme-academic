@@ -14,19 +14,19 @@
   display: inline-block;
   width: 100%;
   margin: 0 0;
-  border: 1px solid @site-border-color-split;
+  border: 1px solid var(--rs-border-primary);
   border-radius: @border-radius-base;
   transition: all 0.2s;
   .code-box-title {
     &,
     a {
-      color: @site-text-color;
-      background: @component-background;
+      color: var(--rs-text-heading);
+      background: var(--rs-bg-card);
     }
   }
   &,
   .code-box-demo {
-    background-color: @component-background;
+    background-color: var(--rs-bg-card);
   }
   .markdown {
     pre {
@@ -67,7 +67,7 @@
     margin-left: 16px;
     padding: 1px 8px;
     color: #777;
-    background: @body-background;
+    background: var(--rs-bg-card);
     border-radius: @border-radius-base @border-radius-base 0 0;
     transition: background-color 0.4s;
 
@@ -94,7 +94,7 @@
     top: 7px;
     right: -16px;
     padding-right: 6px;
-    font-size: @font-size-sm;
+    font-size: @font-size-small;
     text-decoration: none;
     background: inherit;
     transform: scale(0.9);
@@ -149,7 +149,7 @@
       width: 100%;
       margin: 0.5em 0;
       padding-right: 25px;
-      font-size: @font-size-sm;
+      font-size: @font-size-small;
       word-break: break-word;
 
       .ant-row-rtl & {
@@ -223,7 +223,7 @@
     pre {
       margin: 0;
       padding: 0;
-      background: @component-background;
+      background: var(--rs-bg-card);
     }
     &:not(:first-child) {
       border-top: 1px dashed @site-border-color-split;
@@ -277,7 +277,7 @@
     height: 14px;
     font-size: @font-size-base;
     text-align: center;
-    background: @component-background;
+    background: var(--rs-bg-card);
     cursor: pointer;
     transition: transform 0.24s;
 
@@ -285,7 +285,7 @@
       transform: scale(1.2);
     }
     &.anticon-check {
-      color: @green-6 !important;
+      color: @green !important;
       font-weight: bold;
     }
   }
@@ -328,17 +328,17 @@
     width: auto;
     margin: 0;
     code {
-      background: @component-background;
+      background: var(--rs-bg-card);
       border: none;
     }
   }
 
   &-debug {
-    border-color: @purple-3;
+    border-color: @violet;
   }
 
   &-debug &-title a {
-    color: @purple-6;
+    color: @violet;
   }
 }
 

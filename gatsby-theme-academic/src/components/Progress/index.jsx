@@ -1,4 +1,4 @@
-import { Progress } from 'antd';
+import { Progress } from 'rsuite';
 import React from 'react';
 
 const ProgressBar = (props) => {

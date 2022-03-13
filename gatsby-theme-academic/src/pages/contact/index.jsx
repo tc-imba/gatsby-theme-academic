@@ -1,4 +1,4 @@
-import { Layout, Row, Col } from 'antd';
+import { Container, Row, Col } from 'rsuite';
 import React from 'react';
 
 import ContactForm from '../../components/PageFragments/ContactForm';
@@ -7,8 +7,8 @@ import SidebarWrapper from '../../components/PageLayout/Sidebar';
 import SEO from '../../components/Seo';
 
 const Contact = () => (
-  <Layout className="outerPadding">
-    <Layout className="container">
+  <Container className="outerPadding">
+    <Container className="container">
       <SEO
         title="Contact"
         description="Hello folks Rolwin here. You can contact me through the contact form on this page.
@@ -23,7 +23,7 @@ const Contact = () => (
         <div className="marginTopTitle">
           <h1 className="titleSeparate">Contact</h1>
         </div>
-        <Row gutter={[40, 20]}>
+        <Row gutter={[40, 20]} type="flex">
           <Col sm={24} md={24} lg={12}>
             <img
               src="../../contact.png"
@@ -34,8 +34,8 @@ const Contact = () => (
           <ContactForm />
         </Row>
       </SidebarWrapper>
-    </Layout>
-  </Layout>
+    </Container>
+  </Container>
 );
 
 export default Contact;

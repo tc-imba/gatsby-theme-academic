@@ -1,4 +1,4 @@
-import { Divider, Typography } from 'antd';
+import { Divider } from 'rsuite';
 import { useStaticQuery, graphql } from 'gatsby';
 import moment from 'moment';
 import React from 'react';
@@ -15,8 +15,8 @@ export default () => {
   const buildTime = moment(currentDate).format('MMM Do YYYY');
   return (
     <>
-      <Divider style={{ color: 'rgba(0, 0, 0, 0.45)', marginTop: '3rem', marginBottom: '-3rem' }}>
-        <Typography.Text type="secondary">
+      <Divider style={{ color: 'var(--rs-text-tertiary)', marginTop: '3rem', marginBottom: '-3rem' }}>
+        {/*<Typography.Text type="secondary">*/}
           {/* {'Made with '}
         <a href="https://www.gatsbyjs.com/">Gatsby</a>
         {', '}
@@ -26,13 +26,13 @@ export default () => {
         {' and '}
         <a href="https://github.com/">GitHub</a>
         {' style markdown'} */}
-          {`Last Updated on ${buildTime}. `}
-          {/* {'Powered by '}
+        {`Last Updated on ${buildTime}`}
+        {/* {'Powered by '}
           <a href="https://github.com/tc-imba/greatest-gatsby-academic-template">
             greatest-gatsby-academic-template
           </a>
           . */}
-        </Typography.Text>
+      {/*</Typography.Text>*/}
       </Divider>
     </>
   );

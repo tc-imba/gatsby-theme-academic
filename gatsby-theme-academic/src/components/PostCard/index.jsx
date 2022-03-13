@@ -1,7 +1,9 @@
-import { Row, Card } from 'antd';
 import classnames from 'classnames';
 import Img from 'gatsby-image';
 import React from 'react';
+import {
+  Row, Panel, Stack, Col, FlexboxGrid,
+} from 'rsuite';
 
 import { useSiteMetadata } from '../../utils/hooks';
 import Utils from '../../utils/pageUtils';
@@ -37,39 +39,32 @@ const PostCard = (props) => {
   const excerptHTML = Utils.parseMarkDown(Utils.trimExcerpt(excerpt), true);
 
   return (
-    <Card
+    <Panel
       className={classnames(style.postCard, 'cursor-default')}
-      bodyStyle={{ padding: '0.8rem' }}
+      style={{ padding: '0' }}
       hoverable
-      cover={(
-        <div>
-          <a href={Utils.generateFullUrl(siteMetadata, url)}>
-            {fluid ? <Img fluid={fluid} /> : <div className={style.postCardImg} />}
-          </a>
-          <span className={style.dateHolder}>
-            {date ? Utils.formatDate(date) : ''}
-          </span>
-        </div>
-      )}
-      // onClick={handleClick}
+      bordered
     >
-      <Card.Meta
-        title={(
-          <span className={style.title}>
-            <a href={Utils.generateFullUrl(siteMetadata, url)}>{title}</a>
-          </span>
-        )}
-        style={{ marginBottom: '1rem' }}
-      />
-      <Row align="middle" gutter={[0, 8]}>
-        {tags ?
-          tags.map((tag) => (tagsMap[tag] ? <PostTag key={tag} tag={tagsMap[tag]} /> : null)) :
-          null}
-      </Row>
-      <a href={Utils.generateFullUrl(siteMetadata, url)}>
-        <p style={{ marginTop: '1rem' }} dangerouslySetInnerHTML={{ __html: excerptHTML }} />
-      </a>
-    </Card>
+      <div>
+        <a href={Utils.generateFullUrl(siteMetadata, url)}>
+          {fluid ? <Img fluid={fluid} /> : <div className={style.postCardImg} />}
+        </a>
+        <span className={style.dateHolder}>
+          {date ? Utils.formatDate(date) : ''}
+        </span>
+      </div>
+      <div style={{ padding: '0.8rem' }}>
+        <h5><a href={Utils.generateFullUrl(siteMetadata, url)}>{title}</a></h5>
+        <Stack wrap style={{ margin: '-4px' }}>
+          {tags.map(
+            (tag) => (tagsMap[tag] ? <PostTag key={`tag-${tag}`} tag={tagsMap[tag]} /> : null),
+          )}
+        </Stack>
+        <a href={Utils.generateFullUrl(siteMetadata, url)}>
+          <p style={{ marginTop: '1rem' }} dangerouslySetInnerHTML={{ __html: excerptHTML }} />
+        </a>
+      </div>
+    </Panel>
   );
 };
 

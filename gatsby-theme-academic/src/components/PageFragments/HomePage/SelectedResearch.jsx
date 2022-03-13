@@ -1,4 +1,4 @@
-import { Col, Row } from 'antd';
+import { Col, Row } from 'rsuite';
 import { useStaticQuery, graphql } from 'gatsby';
 import _ from 'lodash';
 import React from 'react';

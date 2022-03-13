@@ -111,12 +111,12 @@ module.exports = ({
       },
       'gatsby-plugin-sitemap',
       'gatsby-plugin-robots-txt',
-      {
-        resolve: 'gatsby-plugin-antd',
-        options: {
-          javascriptEnabled: true,
-        },
-      },
+      // {
+      //   resolve: 'gatsby-plugin-antd',
+      //   options: {
+      //     javascriptEnabled: true,
+      //   },
+      // },
       {
         resolve: 'gatsby-plugin-eslint',
         options: {

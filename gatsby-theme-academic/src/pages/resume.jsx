@@ -1,4 +1,4 @@
-import { Button, Row, Col } from 'antd';
+import { Button, Row, Col } from 'rsuite';
 import React, { Component } from 'react';
 import { Document, Page } from 'react-pdf';
 
@@ -44,7 +44,7 @@ export default class Resume extends Component {
         >
           <Page pageNumber={pageNumber} />
         </Document>
-        <Row justify="center" style={{ background: 'lightslategray' }}>
+        <Row justify="center" style={{ background: 'lightslategray' }} type="flex">
           <Col span={2}>
             <p>{`Page ${pageNumber} of ${numPages}`}</p>
           </Col>

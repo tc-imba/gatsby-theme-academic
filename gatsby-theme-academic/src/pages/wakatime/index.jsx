@@ -1,5 +1,5 @@
 /* eslint-disable react/forbid-prop-types */
-import { Layout, Row } from 'antd';
+import { Container, Row } from 'rsuite';
 import React from 'react';
 
 import Header from '../../components/PageLayout/Header';
@@ -8,30 +8,23 @@ import SEO from '../../components/Seo';
 import WakaTimeImage, { WakaTimeTypes } from '../../components/WakaTimeImage';
 
 const WakaTime = () => (
-  <Layout className="outerPadding">
-    <Layout className="container">
-      <Header />
-      <SEO
-        title="WakaTime"
-        description="This page consists of your wakatime stats."
-        path="wakatime"
-      />
-      <SidebarWrapper>
-        <>
-          <div className="marginTopTitle">
-            <h1 className="titleSeparate">WakaTime Activities</h1>
-          </div>
-          <Row gutter={[20, 20]}>
-            {
-              WakaTimeTypes.map((val) => (
-                <WakaTimeImage type={val} />
-              ))
-            }
-          </Row>
-        </>
-      </SidebarWrapper>
-    </Layout>
-  </Layout>
+  <>
+    <SEO
+      title="WakaTime"
+      description="This page consists of your wakatime stats."
+      path="wakatime"
+    />
+    <div className="marginTopTitle">
+      <h1 className="titleSeparate">WakaTime Activities</h1>
+    </div>
+    <Row gutter={[20, 20]} type="flex">
+      {
+        WakaTimeTypes.map((val) => (
+          <WakaTimeImage type={val} />
+        ))
+      }
+    </Row>
+  </>
 );
 
 export default WakaTime;

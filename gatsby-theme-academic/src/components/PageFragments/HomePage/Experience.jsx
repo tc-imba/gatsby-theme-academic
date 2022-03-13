@@ -1,20 +1,17 @@
-import { Row, Col, List } from 'antd';
 import React from 'react';
 import { Timeline } from 'react-event-timeline';
+import {
+  Row, Col, List, FlexboxGrid,
+} from 'rsuite';
 
 import { useSiteMetadata } from '../../../utils/hooks';
-import Icon from '../../Icon';
+import IconListItem from '../../IconListItem';
 import TimelineItem from '../../TimelineItem';
 
 import * as styles from './homePage.module.less';
 
 const generateInterest = (data) => (
-  <List.Item>
-    <List.Item.Meta
-      avatar={<Icon size="lg" fixedWidth icon={data.icon} />}
-      title={data.title}
-    />
-  </List.Item>
+  <IconListItem icon={data.icon} size="lg" title={data.title} />
 );
 
 const Experience = () => {
@@ -24,7 +21,7 @@ const Experience = () => {
 
   return (
     <div className={styles.homepageSection}>
-      <Row>
+      <Row type="flex">
         <Col xs={24} sm={24} md={12} lg={15} style={{ marginBottom: '-2rem' }}>
           <h2 style={{ marginBottom: '0' }}>Education</h2>
           {siteMetadata.education.length > 1
@@ -48,9 +45,11 @@ const Experience = () => {
         </Col>
         <Col xs={24} sm={24} md={12} lg={9}>
           <h2 style={{ marginBottom: '0.8rem' }} className="interests">Interests</h2>
-          <List itemLayout="horizontal" split={false}>
+          {/* <List itemLayout="horizontal" split={false}> */}
+          <div>
             {siteMetadata.interests.map(generateInterest)}
-          </List>
+          </div>
+          {/* </List> */}
         </Col>
       </Row>
 

@@ -1,4 +1,4 @@
-import { Card, Col } from 'antd';
+import { Panel, Col } from 'rsuite';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -28,11 +28,11 @@ const WakaTimeImage = (props) => {
 
   return (
     <Col xs={24} sm={24} md={24} lg={12}>
-      <Card title={titles[type]}>
+      <Panel title={titles[type]}>
         <object type="image/svg+xml" data={url}>
           <img src={url} alt={type} />
         </object>
-      </Card>
+      </Panel>
     </Col>
   );
 };

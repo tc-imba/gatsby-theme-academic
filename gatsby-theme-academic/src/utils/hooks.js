@@ -1,9 +1,31 @@
 /* eslint-disable import/prefer-default-export */
 import { graphql, useStaticQuery } from 'gatsby';
-import { useState, useLayoutEffect } from 'react';
+import { useState, useLayoutEffect, useEffect } from 'react';
+
+const THEME_MODE = 'theme-mode';
+const getThemeMode = () => window.localStorage.getItem(THEME_MODE) || 'light';
+
+export const useTheme = () => {
+  const [themeMode, setThemeMode] = useState(getThemeMode);
+  const themeClassName = `rs-theme-${themeMode}`;
+  window.document.body.classList.add(themeClassName);
+
+  useEffect(() => {
+    const initialMode = getThemeMode();
+    if (initialMode !== themeMode) {
+      const initialThemeClassName = `rs-theme-${initialMode}`;
+      window.localStorage.setItem(THEME_MODE, themeMode);
+      window.document.body.classList.remove(initialThemeClassName);
+      window.document.body.classList.add(themeClassName);
+      // window.location.reload();
+    }
+  }, [themeMode]);
+
+  return [themeMode, setThemeMode];
+};
 
 /**
- * custom hoook to detect the window size of a broswer
+ * custom hook to detect the window size of a browser
  * @return {Array} [height, width ].
  */
 export const useWindowSize = () => {

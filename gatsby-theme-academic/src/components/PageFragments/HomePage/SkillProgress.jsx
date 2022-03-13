@@ -1,4 +1,4 @@
-import { Row, Col } from 'antd';
+import { Row, Col } from 'rsuite';
 import React from 'react';
 
 import ProgressBar from '../../Progress';
@@ -6,7 +6,7 @@ import ProgressBar from '../../Progress';
 const SkillsProgress = () => (
   <div>
     <h2>My Skills</h2>
-    <Row gutter={[20, 20]}>
+    <Row gutter={[20, 20]} type="flex">
       <Col xs={24} sm={24} md={12}>
 
         <ProgressBar

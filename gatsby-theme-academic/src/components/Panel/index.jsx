@@ -1,13 +1,14 @@
-import {
-  Row, Col, Tag,
-} from 'antd';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+import {
+  Row, Col, Grid, FlexboxGrid,
+} from 'rsuite';
 
 import CodeBox from '../CodeBox';
 import PostCard from '../PostCard';
 import ResearchCard from '../ResearchCard';
+import Tag from '../Tag';
 // import PostTag from '../PostTag';
 // import Utils from '../../utils/pageUtils';
 // import Statistics from '../../../content/statistics.json';
@@ -64,20 +65,21 @@ const Panel = (props) => {
 
   return (
     <>
-      <Row gutter={[20, 20]}>
-        <Col xs={24} sm={24} md={24} lg={24}>
-          <CodeBox title="Filters">
-            <Row gutter={[0, 8]} align="middle">
-              <Col xs>
-                <h5 style={{ marginBottom: '0', marginRight: '10px' }}>
-                  Tags:
-                </h5>
-              </Col>
-              { tags.map(generateTag)}
-            </Row>
-          </CodeBox>
-        </Col>
-        {
+      <FlexboxGrid fluid className="spacing-grid">
+        {/*<Row style={{ margin: "6px" }}>*/}
+          <FlexboxGrid.Item as={Col} xs={24} sm={24} md={24} lg={24}>
+            <CodeBox title="Filters">
+              <Row gutter={[0, 8]} align="middle" type="flex">
+                <Col xs>
+                  <div style={{ marginBottom: '0', marginRight: '10px' }}>
+                    Tags:
+                  </div>
+                </Col>
+                { tags.map(generateTag)}
+              </Row>
+            </CodeBox>
+          </FlexboxGrid.Item>
+          {
           data.allMdx && data.allMdx.edges.map((val, key) => {
             // eslint-disable-next-line no-restricted-syntax
             for (const tag of selectedTags) {
@@ -86,20 +88,21 @@ const Panel = (props) => {
             if (isResearch) {
               return (
                 // eslint-disable-next-line react/no-array-index-key
-                <Col key={key} xs={24} sm={24} md={24} lg={24}>
+                <FlexboxGrid.Item as={Col} key={key} xs={24} sm={24} md={24} lg={24}>
                   <ResearchCard data={val} tagsMap={tagsMap} />
-                </Col>
+                </FlexboxGrid.Item>
               );
             }
             return (
             // eslint-disable-next-line react/no-array-index-key
-              <Col key={key} xs={24} sm={24} md={24} lg={8}>
+              <FlexboxGrid.Item as={Col} key={key} xs={24} sm={24} md={24} lg={8}>
                 <PostCard data={val} tagsMap={tagsMap} />
-              </Col>
+              </FlexboxGrid.Item>
             );
           })
         }
-      </Row>
+        {/*</Row>*/}
+      </FlexboxGrid>
     </>
   );
 };

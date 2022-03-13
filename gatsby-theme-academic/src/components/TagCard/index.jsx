@@ -4,7 +4,7 @@ import React from 'react';
 import { useSiteMetadata } from '../../utils/hooks';
 import Utils from '../../utils/pageUtils';
 
-import * as style from './tags.module.less';
+import * as style from './tagCard.module.less';
 
 const TagCard = (props) => {
   const {

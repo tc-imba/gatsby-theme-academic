@@ -1,4 +1,4 @@
-import { Layout } from 'antd';
+import { Container } from 'rsuite';
 import { Link, graphql } from 'gatsby';
 import React from 'react';
 
@@ -20,8 +20,8 @@ export const query = graphql`
 `;
 
 export default ({ data }) => (
-  <Layout className="outerPadding">
-    <Layout className="container">
+  <Container className="outerPadding">
+    <Container className="container">
       <Header />
       <Sidebar404>
         <>
@@ -49,6 +49,6 @@ export default ({ data }) => (
           </div>
         </>
       </Sidebar404>
-    </Layout>
-  </Layout>
+    </Container>
+  </Container>
 );

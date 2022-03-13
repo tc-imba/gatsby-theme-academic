@@ -1,7 +1,4 @@
 import React from 'react';
-// import { Row, Col } from 'antd';
-// import AboutTile from '../../AbouTile';
-// import { stripTags, domHtml } from '../../../utils/stripTags';
 
 import { useSiteMetadata } from '../../../utils/hooks';
 import Utils from '../../../utils/pageUtils';

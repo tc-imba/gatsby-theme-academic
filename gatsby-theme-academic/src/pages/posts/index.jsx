@@ -1,4 +1,4 @@
-import { Layout } from 'antd';
+import { Container } from 'rsuite';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -10,25 +10,19 @@ import Panel from '../../components/Panel';
 import SEO from '../../components/Seo';
 
 const Posts = ({ data }) => (
-  <Layout className="outerPadding">
-    <Layout className="container">
-      <Header />
-      <SEO
-        title="Posts"
-        description="I like blogging about various web technologies and other stuff related to
+  <>
+    <SEO
+      title="Posts"
+      description="I like blogging about various web technologies and other stuff related to
           javascript and other trends like graphql, prisma etc. This blog expresses my views of various technologies
           and scenarios I have come across in realtime."
-        path="posts"
-      />
-      <SidebarWrapper>
-        <div className="marginTopTitle">
-          <h1 className="titleSeparate">Posts</h1>
-        </div>
-        <Panel type="posts" data={data} />
-        <Footer />
-      </SidebarWrapper>
-    </Layout>
-  </Layout>
+      path="posts"
+    />
+    <div className="marginTopTitle">
+      <h1 className="titleSeparate">Posts</h1>
+    </div>
+    <Panel type="posts" data={data} />
+  </>
 );
 
 Posts.propTypes = {

@@ -1,6 +1,6 @@
 import {
-  Col, Form, Input, Button, message,
-} from 'antd';
+  Col, Form, Input, Button,
+} from 'rsuite';
 import React from 'react';
 
 import { useSiteMetadata } from '../../../utils/hooks';
@@ -25,7 +25,7 @@ export default () => {
 
     fetch(siteMetadata.contactFormUrl, { method: 'POST', body: formData })
       .then(() => {
-        message.success('Thank you for your kind response 🙂. Will get back to you.');
+        // message.success('Thank you for your kind response 🙂. Will get back to you.');
         form.resetFields();
       })
       // eslint-disable-next-line no-console

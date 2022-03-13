@@ -1,8 +1,6 @@
 /* eslint-disable react/forbid-prop-types */
 /* Vendor imports */
-import {
-  Layout, Row, Col,
-} from 'antd';
+import { Container, Row, Col } from 'rsuite';
 import { graphql } from 'gatsby';
 // import Img from 'gatsby-image';
 /* App imports */
@@ -41,57 +39,52 @@ const TagPage = ({
   const tagDescription = tag ? tag.description : '';
 
   return (
-    <Layout className="outerPadding">
-      <Layout className="container">
-        <Header />
-        <SEO
-          title={tagName}
-          description={`All post about ${tagName}. ${tagDescription} `}
-          path={Utils.resolvePageUrl(tagPagePath, tag)}
-          keywords={[tagName]}
-        />
-        <SidebarWrapper>
-          <div className={`marginTopTitle ${style.tagsList}`}>
-            <h1 className="titleSeparate">
-              #
-              {tagName}
-            </h1>
-            {/* <div className={style.bannerImgContainer}> */}
-            {/*  <Img className={style.bannerImg} fluid={tagImage} alt={tagName} /> */}
-            {/* </div> */}
-            <h4 className="textCenter">
-              {tagDescription}
-            </h4>
-          </div>
-          {research.length > 0 ? (
-            <>
-              <h2>Research</h2>
-              <Row gutter={[20, 20]}>
-                {research.map((post, key) => (
-                // eslint-disable-next-line react/no-array-index-key
-                  <Col key={key} xs={24} sm={24} md={24} lg={24}>
-                    <ResearchCard data={post} tagsMap={tagsMap} />
-                  </Col>
-                ))}
-              </Row>
-            </>
-          ) : null}
-          {posts.length > 0 ? (
-            <>
-              <h2>Posts</h2>
-              <Row gutter={[20, 20]}>
-                {posts.map((post, key) => (
-                  // eslint-disable-next-line react/no-array-index-key
-                  <Col key={key} xs={24} sm={24} md={12} lg={8}>
-                    <PostCard data={post} tagsMap={tagsMap} />
-                  </Col>
-                ))}
-              </Row>
-            </>
-          ) : null}
-        </SidebarWrapper>
-      </Layout>
-    </Layout>
+    <>
+      <SEO
+        title={tagName}
+        description={`All post about ${tagName}. ${tagDescription} `}
+        path={Utils.resolvePageUrl(tagPagePath, tag)}
+        keywords={[tagName]}
+      />
+      <div className={`marginTopTitle ${style.tagsList}`}>
+        <h1 className="titleSeparate">
+          #
+          {tagName}
+        </h1>
+        {/* <div className={style.bannerImgContainer}> */}
+        {/*  <Img className={style.bannerImg} fluid={tagImage} alt={tagName} /> */}
+        {/* </div> */}
+        <h4 className="textCenter">
+          {tagDescription}
+        </h4>
+      </div>
+      {research.length > 0 ? (
+        <>
+          <h2>Research</h2>
+          <Row gutter={[20, 20]} type="flex">
+            {research.map((post, key) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <Col key={key} xs={24} sm={24} md={24} lg={24}>
+                <ResearchCard data={post} tagsMap={tagsMap} />
+              </Col>
+            ))}
+          </Row>
+        </>
+      ) : null}
+      {posts.length > 0 ? (
+        <>
+          <h2>Posts</h2>
+          <Row gutter={[20, 20]} type="flex">
+            {posts.map((post, key) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <Col key={key} xs={24} sm={24} md={12} lg={8}>
+                <PostCard data={post} tagsMap={tagsMap} />
+              </Col>
+            ))}
+          </Row>
+        </>
+      ) : null}
+    </>
   );
 };
 
