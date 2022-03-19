@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---gatsby-theme-academic-src-pages-contact-index-jsx",
+    "componentChunkName": "component---node-modules-gatsby-theme-academic-src-pages-contact-index-jsx",
     "path": "/contact/",
     "result": {"pageContext":{"slug":"/contact/","langKey":"en"}},
     "staticQueryHashes": ["3013679938","4097791827"]}
