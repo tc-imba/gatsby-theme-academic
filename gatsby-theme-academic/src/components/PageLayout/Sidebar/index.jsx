@@ -161,14 +161,14 @@ const SidebarWrapper = (props) => {
   }
   return (
     <>
-      <Container className={`${style.content} ${style.background}`}>
-        <Content className={`${style.content} ${style.background}`}>
+      <Container className={`${style.content}`}>
+        <Content className={`${style.content}`}>
           <FlexboxGrid style={{ marginBottom: '4rem' }}>
             <FlexboxGrid.Item as={Col} xs={24} sm={24} md={8} lg={7} className={style.sidebarContent}>
               {domContent}
             </FlexboxGrid.Item>
             <FlexboxGrid.Item as={Col} xs={24} sm={24} md={16} lg={17}>
-              <Container className={`${style.background} ${style.boxContent} borderRadiusSection`}>
+              <Container className={`${style.boxContent} borderRadiusSection`}>
                 {children}
               </Container>
             </FlexboxGrid.Item>
@@ -183,10 +183,10 @@ export const Sidebar404 = (props) => {
   const { children } = props;
   return (
     <Container>
-      <Content className={`${style.content} ${style.background} `}>
+      <Content className={`${style.content}`}>
         <Row type="flex">
           <Col sm={24} md={24} lg={24}>
-            <Container className={`${style.background} ${style.boxContent} ${style.sideBar404Radius}`}>
+            <Container className={`${style.boxContent} ${style.sideBar404Radius}`}>
               {children}
             </Container>
           </Col>

@@ -112,14 +112,14 @@ const ResearchCard = (props) => {
           <FlexboxGrid>
             {authors ? authors.map(generateAuthor) : null}
           </FlexboxGrid>
-          <Stack divider={<Divider vertical className={style.divider} />}>
+          <Stack wrap divider={<Divider vertical className={style.divider} />}>
             {infoLine}
           </Stack>
           <a href={Utils.generateFullUrl(siteMetadata, url)}>
             <p style={{ marginTop: '1rem' }} dangerouslySetInnerHTML={{ __html: excerptHTML }} />
           </a>
           {links && links.length ? (
-            <Stack wrap spacing={6} style={{ marginTop: '1rem' }}>
+            <Stack wrap spacing={6} style={{ marginTop: '1rem'}}>
               {links.map(generateLink) }
             </Stack>
           ) : null}

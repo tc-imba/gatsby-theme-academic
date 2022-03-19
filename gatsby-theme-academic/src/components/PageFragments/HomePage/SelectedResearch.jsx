@@ -1,4 +1,4 @@
-import { Col, Row } from 'rsuite';
+import { Col, FlexboxGrid } from 'rsuite';
 import { useStaticQuery, graphql } from 'gatsby';
 import _ from 'lodash';
 import React from 'react';
@@ -64,15 +64,15 @@ const SelectedResearch = () => {
   return (data.allMdx && data.allMdx.edges && data.allMdx.edges.length) ? (
     <div className={styles.homepageSection}>
       <h2 style={{ marginBottom: '1rem' }}>Selected Research</h2>
-      <Row gutter={[20, 20]}>
+      <FlexboxGrid fluid className="spacing-grid">
         {data.allMdx &&
           data.allMdx.edges.map((val, key) => (
             // eslint-disable-next-line react/no-array-index-key
-            <Col key={key} xs={24} sm={24} md={24} lg={24}>
+            <FlexboxGrid.Item as={Col} xs={24} sm={24} md={24} lg={24}>
               <ResearchCard data={val} tagsMap={tagsMap} />
-            </Col>
+            </FlexboxGrid.Item>
           ))}
-      </Row>
+      </FlexboxGrid>
     </div>
   ) : (
     <></>

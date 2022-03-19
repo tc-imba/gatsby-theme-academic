@@ -3,8 +3,10 @@ title: "Dire Tide 2020"
 tags:
   - "dota2"
   - "game"
+  - "moba"
+  - "event"
 date: 2020-10-04
-venue: DOTA2
+venue: a very very very very long long long long long long venue
 authors:
   - name: "Valve"
     url: "https://www.valvesoftware.com/"
