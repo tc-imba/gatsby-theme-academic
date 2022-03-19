@@ -3,10 +3,14 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { useState, useLayoutEffect, useEffect } from 'react';
 
 const THEME_MODE = 'theme-mode';
-const getThemeMode = () => window.localStorage.getItem(THEME_MODE) || 'light';
+const getThemeMode = () => {
+  const savedThemeMode = window.localStorage.getItem(THEME_MODE);
+  if (savedThemeMode === 'dark' || savedThemeMode === 'light') return savedThemeMode;
+  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+};
 
 export const useTheme = () => {
-  const [themeMode, setThemeMode] = useState(getThemeMode);
+  const [themeMode, setThemeMode] = useState(getThemeMode());
   const themeClassName = `rs-theme-${themeMode}`;
   window.document.body.classList.add(themeClassName);
 
