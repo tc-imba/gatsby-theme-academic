@@ -20,7 +20,7 @@ const AboutMe = () => {
           keywords={['Rolwin', 'Reevan', 'Monteiro', 'FullStack developer', 'Javascript', 'ReactJS', 'NodeJS', 'Gatsby']}
         />
         <h1 className="titleSeparate">About Me</h1>
-        <div dangerouslySetInnerHTML={{ __html: markdown }} />
+        <div className="markdown-body" dangerouslySetInnerHTML={{ __html: markdown }} />
       </div>
       {/*      <Row gutter={[20, 20]}>
         <Col xs={24} sm={24} md={12} lg={8}>

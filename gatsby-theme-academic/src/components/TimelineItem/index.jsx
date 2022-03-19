@@ -11,7 +11,7 @@ const TimelineItem = (data) => (
     subtitleStyle={{ fontSize: '12pt', fontWeight: '400' }}
     createdAt={data.date}
     style={{ fontSize: '11pt', fontWeight: '300' }}
-    icon={<Icon size="md" fixedWidth icon={data.icon || 'school'} />}
+    icon={<Icon size="sm" fixedWidth icon={data.icon || 'school'} />}
     iconStyle={{ cursor: 'default' }}
     iconColor="#44566C"
   />

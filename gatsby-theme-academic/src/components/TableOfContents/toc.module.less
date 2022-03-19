@@ -59,7 +59,7 @@ ul.toc > li {
   margin-left: -1px;
   padding-left: 16px;
   overflow: hidden;
-  color: @site-text-color;
+  color: var(--rs-text-heading);
   white-space: nowrap;
   text-overflow: ellipsis;
   border-left: 1px solid transparent;
@@ -73,20 +73,16 @@ ul.toc > li {
     border-right: 1px solid transparent;
     border-left: none;
   }
-
-  //:hover {
-  //  color: @primary-color;
-  //}
 }
 
 .toc-current {
-  border-color: @primary-color !important;
+  border-color: var(--rs-text-active) !important;
   border-width: 2px !important;
 }
 
 .toc-active {
   font-weight: bold;
-  color: @primary-color !important;
+  color: var(--rs-text-active) !important;
 }
 
 

@@ -1,12 +1,14 @@
 // eslint-disable-next-line import/no-unresolved
-import { globalHistory } from '@reach/router';
-import React, { useRef } from 'react';
+import { useLocation } from '@gatsbyjs/reach-router';
+import React, { useRef, useContext } from 'react';
 import {
-  Container, Content, Row, Col, List, Button, Sidebar, Affix, Grid, FlexboxGrid, Divider, IconButton,
+  Container, Content, Row, Col, List, Button, Sidebar, Grid, FlexboxGrid, Divider, IconButton,
 } from 'rsuite';
 
+import Context from '../../../utils/context';
 import { useWindowSize, useSiteMetadata } from '../../../utils/hooks';
 import Utils from '../../../utils/pageUtils';
+import Affix from '../../Affix';
 import Icon from '../../Icon';
 import IconListItem from '../../IconListItem';
 import LoadableTableOfContents from '../../TableOfContents/loadable';
@@ -20,20 +22,20 @@ const Name = () => {
     .join(' ');
   const lastName = arr[arr.length - 1];
   return (
-    <Row gutter={5} type="flex">
-      <Col xs={24}>
+    <FlexboxGrid>
+      <FlexboxGrid.Item as={Col} xs={24}>
         <h2 className="centerAlign">
           {firstName}
           &nbsp;
           <span>{lastName}</span>
         </h2>
-      </Col>
+      </FlexboxGrid.Item>
       {siteMetadata.authorAlternative ? (
-        <Col xs={24}>
+        <FlexboxGrid.Item as={Col} xs={24}>
           <h3 className="centerAlign">{siteMetadata.authorAlternative}</h3>
-        </Col>
+        </FlexboxGrid.Item>
       ) : null}
-    </Row>
+    </FlexboxGrid>
   );
 };
 
@@ -104,9 +106,11 @@ const UserInfo = () => {
 };
 
 const DomContent = (props) => {
-  const { tableOfContents } = props;
   const siteMetadata = useSiteMetadata();
   const mainSidebar = useRef(null);
+  const context = useContext(Context);
+  const { pathname } = props;
+  console.log(context);
   return (
     <Sidebar>
       <div ref={mainSidebar}>
@@ -118,15 +122,18 @@ const DomContent = (props) => {
         <div className={`${style.name} ${style.boxName} centerAlign`}>
           <Name />
         </div>
-        <UserInfo />
+        {context && context.state && context.state.tableOfContents
+        && context.state.pathname === pathname
+          ? (
+            <>
+              <Divider />
+              <LoadableTableOfContents
+                tableOfContents={context.state.tableOfContents}
+                mainSidebar={mainSidebar}
+              />
+            </>
+          ) : <UserInfo />}
       </div>
-      {tableOfContents
-        ? (
-          <>
-            <Divider />
-            <LoadableTableOfContents tableOfContents={tableOfContents} mainSidebar={mainSidebar} />
-          </>
-        ) : null}
       {/* <div className={style.resumeDownload}> */}
       {/*  <a href="../resume.pdf" target="_blank">Download CV</a> */}
       {/* </div> */}
@@ -136,23 +143,20 @@ const DomContent = (props) => {
 
 const SidebarWrapper = (props) => {
   const [width] = useWindowSize();
-  const {
-    children,
-    tableOfContents,
-  } = props;
-  const { pathname } = globalHistory.location;
-  let domContent = <DomContent tableOfContents={tableOfContents} />;
-  if (width > 997) {
+  const { children } = props;
+  const { pathname } = useLocation();
+  let domContent = <DomContent pathname={pathname} />;
+  if (width >= 992) {
     domContent = (
       <Affix top={100}>
-        <DomContent tableOfContents={tableOfContents} />
+        <DomContent pathname={pathname} />
       </Affix>
     );
   }
-  if (width < 768) {
+  if (width < 480) {
     domContent = <></>;
     if (pathname === '/') {
-      domContent = <DomContent tableOfContents={tableOfContents} />;
+      domContent = <DomContent pathname={pathname} />;
     }
   }
   return (

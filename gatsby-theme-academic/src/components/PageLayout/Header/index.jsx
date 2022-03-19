@@ -1,15 +1,20 @@
-import { useLocation } from '@reach/router';
-import { Link } from 'gatsby';
-import { withPrefix } from 'gatsby-link';
+import { useLocation } from '@gatsbyjs/reach-router';
+import { Link, withPrefix } from 'gatsby';
+import { startsWith } from 'lodash';
 import React, { useRef, useState } from 'react';
 import {
-  Affix, IconButton, Button, Tooltip, Container, Header, Whisper,
+  IconButton, Button, Tooltip, Container, Header, Whisper,
 } from 'rsuite';
 
 import 'rsuite/dist/rsuite.min.css';
 import '../../../styles/global.less';
+import '../../../styles/github-markdown.less';
+import 'typeface-jetbrains-mono';
+import 'highlight.js/styles/github.css';
+import 'katex/dist/katex.min.css';
 
 import { useWindowSize, useTheme } from '../../../utils/hooks';
+import Affix from '../../Affix';
 import Icon from '../../Icon';
 import LoadableSearch from '../../SearchBar/loadable';
 
@@ -46,11 +51,16 @@ const NavButton = (props) => {
     onClick,
     to,
     children,
+    partiallyActive,
   } = props;
+
   const location = useLocation();
   const prefixedTo = withPrefix(to);
-  const isCurrent = encodeURI(prefixedTo) === location.pathname;
-  const appearance = isCurrent ? 'primary' : 'subtle';
+  const encodedHref = encodeURI(prefixedTo);
+  const isCurrent = location.pathname === encodedHref;
+  const isPartiallyCurrent = startsWith(location.pathname, encodedHref);
+  const showPrimary = partiallyActive ? isPartiallyCurrent : isCurrent;
+  const appearance = showPrimary ? 'primary' : 'subtle';
 
   return (
     <li className={style.navItem}>
@@ -58,7 +68,6 @@ const NavButton = (props) => {
         className={`rs-btn rs-btn-lg rs-btn-${appearance}`}
         to={to}
         onClick={onClick}
-        partiallyActive
       >
         {children}
       </Link>
@@ -117,9 +126,9 @@ export default () => {
           <div className={style.backgroundDiv}>
             <ul className={style.nav}>
               <NavButton to="/" onClick={toggleMenu}>About</NavButton>
-              <NavButton to="/experience/" onClick={toggleMenu}>Experience</NavButton>
-              <NavButton to="/research/" onClick={toggleMenu}>Research</NavButton>
-              <NavButton to="/posts/" onClick={toggleMenu}>Posts</NavButton>
+              <NavButton to="/experience/" onClick={toggleMenu} partiallyActive>Experience</NavButton>
+              <NavButton to="/research/" onClick={toggleMenu} partiallyActive>Research</NavButton>
+              <NavButton to="/posts/" onClick={toggleMenu} partiallyActive>Posts</NavButton>
               <li className={style.navItem}>
                 <ThemeModeSwitch />
               </li>

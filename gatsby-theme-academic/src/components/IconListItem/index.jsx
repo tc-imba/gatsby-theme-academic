@@ -23,12 +23,12 @@ const IconListItem = (props) => {
 
 IconListItem.propTypes = {
   icon: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   size: PropTypes.string,
 };
 
 IconListItem.defaultProps = {
-  size: 'md',
+  size: 'sm',
 };
 
 export default IconListItem;

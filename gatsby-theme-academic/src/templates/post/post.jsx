@@ -1,25 +1,19 @@
-import {
-  Container, Panel, Row, Col, Input, Message,
-} from 'rsuite';
+import { useLocation } from '@gatsbyjs/reach-router';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import moment from 'moment';
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import {
+  Panel, Row, Col, Input, Message, FlexboxGrid,
+} from 'rsuite';
 import nacl from 'tweetnacl';
 import naclUtil from 'tweetnacl-util';
 
-import 'github-markdown-css';
-import 'typeface-jetbrains-mono';
-import 'highlight.js/styles/github.css';
-import 'katex/dist/katex.min.css';
-
 import CodeBox from '../../components/CodeBox';
 import Comment from '../../components/Comment';
-import Footer from '../../components/PageLayout/Footer';
-import Header from '../../components/PageLayout/Header';
-import SidebarWrapper from '../../components/PageLayout/Sidebar';
 import SEO from '../../components/Seo';
+import Context from '../../utils/context';
 import { useSiteMetadata } from '../../utils/hooks';
 import Utils from '../../utils/pageUtils';
 import './highlight-syntax.less';
@@ -98,6 +92,15 @@ const Post = ({ data }) => {
     time.push(`Edited: ${editTime}`);
   }
 
+  // toc
+  const context = useContext(Context);
+  const location = useLocation();
+  useEffect(() => {
+    if (context && context.setState && Object.getOwnPropertyNames(tableOfContents).length) {
+      context.setState({ tableOfContents, pathname: location.pathname });
+    }
+  }, []);
+
   return (
     <>
       <SEO
@@ -112,32 +115,30 @@ const Post = ({ data }) => {
           'Gatsby',
           'technology']}
       />
-      <div direction="vertical" size="large">
+      <div>
         <div className="marginTopTitle">
           <h1 className="titleSeparate">{title}</h1>
         </div>
-        <div style={{ color: 'rgba(0, 0, 0, 0.45)' }}>
+        <div style={{ color: 'var(--rs-text-tertiary)', marginBottom: '1rem' }}>
           {time.join(', ')}
         </div>
-        <Row gutter={[20, 20]} type="flex">
-          <Col xs={24} sm={24} md={24} lg={fluid ? 12 : 24} xl={fluid ? 16 : 24}>
+        <FlexboxGrid style={{ marginBottom: '1rem' }}>
+          <FlexboxGrid.Item as={Col} xs={24} sm={24} md={fluid ? 12 : 24} lg={fluid ? 16 : 24}>
             <CodeBox title="Abstract" style={{ height: '100%' }}>
               <p
                 style={{ marginBottom: '0' }}
                 dangerouslySetInnerHTML={{ __html: Utils.parseMarkDown(excerpt, true) }}
               />
             </CodeBox>
-          </Col>
+          </FlexboxGrid.Item>
           {fluid ? (
-            <Col xs={24} sm={24} md={24} lg={12} xl={8}>
-              <Row align="middle" style={{ height: '100%' }} type="flex">
-                <Col xs={24}>
-                  <Img fluid={fluid} title={title} alt={title} />
-                </Col>
-              </Row>
-            </Col>
+            <FlexboxGrid.Item as={Col} xs={24} sm={24} md={12} lg={8}>
+              <div style={{ height: '100%' }}>
+                <Img fluid={fluid} title={title} alt={title} />
+              </div>
+            </FlexboxGrid.Item>
           ) : null}
-        </Row>
+        </FlexboxGrid>
 
         {state.locked
           ? (
@@ -157,14 +158,14 @@ const Post = ({ data }) => {
                       </Message>
                     )
                   }
-                  <Input.Search
+                  {/*                  <Input.Search
                     placeholder="Enter password to unlock this article."
                     allowClear
                     enterButton="Unlock"
                     size="large"
                     onSearch={onUnlock}
                     style={{ marginTop: '1rem' }}
-                  />
+                  /> */}
                 </Col>
               </Row>
             </Panel>

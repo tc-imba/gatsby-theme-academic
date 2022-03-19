@@ -17,7 +17,7 @@ const generateListItem = (data) => {
   return (
     <Panel style={{ padding: '12.5px 20px' }}>
       <h6 dangerouslySetInnerHTML={{ __html: title }} />
-      <div>{`${data.date}, ${data.location}`}</div>
+      <div style={{ color: 'var(--rs-text-secondary)' }}>{`${data.date}, ${data.location}`}</div>
       <div dangerouslySetInnerHTML={{ __html: description }} />
     </Panel>
   );

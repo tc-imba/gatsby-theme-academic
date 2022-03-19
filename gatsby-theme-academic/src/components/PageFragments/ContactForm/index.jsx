@@ -12,7 +12,7 @@ const validateMessages = {
   },
 };
 export default () => {
-  const [form] = Form.useForm();
+/*  const [form] = Form.useForm();
   const siteMetadata = useSiteMetadata();
   const onFinish = (data) => {
     const formData = new FormData();
@@ -30,11 +30,11 @@ export default () => {
       })
       // eslint-disable-next-line no-console
       .catch((error) => console.error('Error:', error));
-  };
+  };*/
 
   return (
     <Col sm={24} md={24} lg={12} className="widthFull">
-      <Form form={form} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
+      {/*<Form form={form} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
         <Form.Item name={['name']} rules={[{ required: true }]}>
           <Input size="large" placeholder="Full Name *" />
         </Form.Item>
@@ -49,7 +49,7 @@ export default () => {
             SUBMIT
           </Button>
         </Form.Item>
-      </Form>
+      </Form>*/}
     </Col>
   );
 };

@@ -54,7 +54,7 @@
     "gatsby-source-filesystem": "^3.14.0",
     "gatsby-transformer-remark": "^4.11.0",
     "gatsby-transformer-sharp": "^3.14.0",
-    "github-markdown-css": "^4.0.0",
+    "github-markdown-css": "^5.1.0",
     "highlight.js": "^11.2.0",
     "hogan.js": "^3.0.2",
     "is-relative-url": "^3.0.0",
