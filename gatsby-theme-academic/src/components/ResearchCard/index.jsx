@@ -63,7 +63,7 @@ const ResearchCard = (props) => {
   const generateAuthor = (author, index) => {
     let markdown = Utils.parseMarkDown(author, true);
     if (index >= 0 && index !== authors.length - 1) {
-      markdown += ',';
+      markdown += ',&nbsp;';
     }
     return (
       <FlexboxGrid.Item key={index} xs>
@@ -112,7 +112,7 @@ const ResearchCard = (props) => {
           <FlexboxGrid>
             {authors ? authors.map(generateAuthor) : null}
           </FlexboxGrid>
-          <Stack wrap divider={<Divider vertical className={style.divider} />}>
+          <Stack wrap divider={<Divider vertical className={style.divider} />} style={{ marginTop: '0.5rem'}}>
             {infoLine}
           </Stack>
           <a href={Utils.generateFullUrl(siteMetadata, url)}>
