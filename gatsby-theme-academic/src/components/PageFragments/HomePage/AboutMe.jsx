@@ -9,19 +9,10 @@ const AboutMe = () => {
   const description = siteMetadata.introduction.join('\n\n');
   const markdown = Utils.parseMarkDown(description);
   // console.log(markdown);
-
   return (
-    <>
-      <div>
-        <SEO
-          title="About"
-          description={description}
-          path=""
-          keywords={['Rolwin', 'Reevan', 'Monteiro', 'FullStack developer', 'Javascript', 'ReactJS', 'NodeJS', 'Gatsby']}
-        />
-        <h1 className="titleSeparate">About Me</h1>
-        <div className="markdown-body" dangerouslySetInnerHTML={{ __html: markdown }} />
-      </div>
+    <div>
+      <h1 className="titleSeparate">About Me</h1>
+      <div className="markdown-body" dangerouslySetInnerHTML={{ __html: markdown }} />
       {/*      <Row gutter={[20, 20]}>
         <Col xs={24} sm={24} md={12} lg={8}>
           <AboutTile
@@ -77,7 +68,7 @@ const AboutMe = () => {
           />
         </Col>
       </Row> */}
-    </>
+    </div>
   );
 };
 export default AboutMe;
