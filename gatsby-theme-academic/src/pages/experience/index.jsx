@@ -1,12 +1,9 @@
 import {
-  Container, Col, Row, Panel, List, PanelGroup
+  Col, Panel, PanelGroup, FlexboxGrid,
 } from 'rsuite';
 import _ from 'lodash';
 import React from 'react';
 
-import Footer from '../../components/PageLayout/Footer';
-import Header from '../../components/PageLayout/Header';
-import SidebarWrapper from '../../components/PageLayout/Sidebar';
 import SEO from '../../components/Seo';
 import { useSiteMetadata } from '../../utils/hooks';
 import Utils from '../../utils/pageUtils';
@@ -52,14 +49,14 @@ const Experience = () => {
       <div className="marginTopTitle">
         <h1 className="titleSeparate">Experience</h1>
       </div>
-      <Row gutter={[20, 20]} type="flex">
-        <Col xs={24} sm={24} md={12}>
+      <FlexboxGrid>
+        <FlexboxGrid.Item as={Col} xs={24} sm={24} md={12}>
           {leftColumn.map(generateExperience)}
-        </Col>
-        <Col xs={24} sm={24} md={12}>
+        </FlexboxGrid.Item>
+        <FlexboxGrid.Item as={Col} xs={24} sm={24} md={12}>
           {rightColumn.map(generateExperience)}
-        </Col>
-      </Row>
+        </FlexboxGrid.Item>
+      </FlexboxGrid>
     </>
   );
 };

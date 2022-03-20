@@ -17,7 +17,9 @@ export const wrapPageElement = ({
         <Container className="container">
           <Header />
           <SidebarWrapper>
-            {element}
+            <div>
+              {element}
+            </div>
             <Footer />
           </SidebarWrapper>
         </Container>
