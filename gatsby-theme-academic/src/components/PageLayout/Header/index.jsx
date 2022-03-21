@@ -9,8 +9,8 @@ import {
 import 'rsuite/dist/rsuite.min.css';
 import '../../../styles/global.less';
 import '../../../styles/github-markdown.less';
+import '../../../styles/github-hightlight.less';
 import 'typeface-jetbrains-mono';
-import 'highlight.js/styles/github.css';
 import 'katex/dist/katex.min.css';
 
 import { useWindowSize, useTheme } from '../../../utils/hooks';
