@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---node-modules-gatsby-theme-academic-src-pages-resume-jsx",
+    "componentChunkName": "component---gatsby-theme-academic-src-pages-resume-jsx",
     "path": "/resume/",
     "result": {"pageContext":{"slug":"/resume/","langKey":"en"}},
-    "staticQueryHashes": ["3013679938","4097791827"]}
+    "staticQueryHashes": ["1552981879","3013679938","4097791827"]}

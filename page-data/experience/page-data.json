@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---node-modules-gatsby-theme-academic-src-pages-experience-index-jsx",
+    "componentChunkName": "component---gatsby-theme-academic-src-pages-experience-index-jsx",
     "path": "/experience/",
     "result": {"pageContext":{"slug":"/experience/","langKey":"en"}},
     "staticQueryHashes": ["1552981879","3013679938","4097791827"]}
