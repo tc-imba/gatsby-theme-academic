@@ -103,5 +103,14 @@ for $f\in L^1$, which is the statement of [Lebesgue Differentiation Theorem](htt
 
 `gist:tc-imba/76dc7e627a56ac84b5c1c14b08d90f1e`
 
+
 [//]: # ()
 [//]: # (`gist:weirdpattern/ce54fdb1e5621b5966e146026995b974#syntax.text`)
+
+
+<iframe frameborder="0"
+style="min-width: 200px; width: 60%; height: 460px;"
+scrolling="no"
+seamless="seamless"
+srcdoc='<html><body><style type="text/css">.gist .gist-data { height: 400px; }</style><script src="https://gist.github.com/sundbry/5e0507d93d4c89023b2ba5f39f27f722.js"></script></body></html>'
+/>

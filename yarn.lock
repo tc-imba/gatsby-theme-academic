@@ -1082,7 +1082,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.11.2":
+"@babel/runtime@^7.11.2", "@babel/runtime@^7.2.0":
   version "7.18.9"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.18.9.tgz#b4fcfce55db3d2e5e080d2490f608a3b9f407f4a"
   integrity sha512-lkqXDcvlFT5rvEjiu6+QYO+1GXrEHRo2LOtS7E4GtX5ESIZOgepqsZBVIj6Pv+a6zqsya9VCgiK1KAK4BvJDAw==
@@ -1151,51 +1151,6 @@
     js-yaml "^3.13.1"
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
-
-"@fortawesome/fontawesome-common-types@^0.2.36":
-  version "0.2.36"
-  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.36.tgz#b44e52db3b6b20523e0c57ef8c42d315532cb903"
-  integrity sha512-a/7BiSgobHAgBWeN7N0w+lAhInrGxksn13uK7231n2m8EDPE3BMCl9NZLTGrj9ZXfCmC6LM0QLqXidIizVQ6yg==
-
-"@fortawesome/fontawesome-common-types@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.3.0.tgz#949995a05c0d8801be7e0a594f775f1dbaa0d893"
-  integrity sha512-CA3MAZBTxVsF6SkfkHXDerkhcQs0QPofy43eFdbWJJkZiq3SfiaH1msOkac59rQaqto5EqWnASboY1dBuKen5w==
-
-"@fortawesome/fontawesome-svg-core@^1.2.36":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-1.3.0.tgz#343fac91fa87daa630d26420bfedfba560f85885"
-  integrity sha512-UIL6crBWhjTNQcONt96ExjUnKt1D68foe3xjEensLDclqQ6YagwCRYVQdrp/hW0ALRp/5Fv/VKw+MqTUWYYvPg==
-  dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.3.0"
-
-"@fortawesome/free-brands-svg-icons@^5.15.4":
-  version "5.15.4"
-  resolved "https://registry.yarnpkg.com/@fortawesome/free-brands-svg-icons/-/free-brands-svg-icons-5.15.4.tgz#ec8a44dd383bcdd58aa7d1c96f38251e6fec9733"
-  integrity sha512-f1witbwycL9cTENJegcmcZRYyawAFbm8+c6IirLmwbbpqz46wyjbQYLuxOc7weXFXfB7QR8/Vd2u5R3q6JYD9g==
-  dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.36"
-
-"@fortawesome/free-regular-svg-icons@^5.15.4":
-  version "5.15.4"
-  resolved "https://registry.yarnpkg.com/@fortawesome/free-regular-svg-icons/-/free-regular-svg-icons-5.15.4.tgz#b97edab436954333bbeac09cfc40c6a951081a02"
-  integrity sha512-9VNNnU3CXHy9XednJ3wzQp6SwNwT3XaM26oS4Rp391GsxVYA+0oDR2J194YCIWf7jNRCYKjUCOduxdceLrx+xw==
-  dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.36"
-
-"@fortawesome/free-solid-svg-icons@^5.15.4":
-  version "5.15.4"
-  resolved "https://registry.yarnpkg.com/@fortawesome/free-solid-svg-icons/-/free-solid-svg-icons-5.15.4.tgz#2a68f3fc3ddda12e52645654142b9e4e8fbb6cc5"
-  integrity sha512-JLmQfz6tdtwxoihXLg6lT78BorrFyCf59SAwBM6qV/0zXyVeDygJVb3fk+j5Qat+Yvcxp1buLTY5iDh1ZSAQ8w==
-  dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.36"
-
-"@fortawesome/react-fontawesome@^0.1.15":
-  version "0.1.18"
-  resolved "https://registry.yarnpkg.com/@fortawesome/react-fontawesome/-/react-fontawesome-0.1.18.tgz#dae37f718a24e14d7a99a5496c873d69af3fbd73"
-  integrity sha512-RwLIB4TZw0M9gvy5u+TusAA0afbwM4JQIimNH/j3ygd6aIvYPQLqXMhC9ErY26J23rDPyDZldIfPq/HpTTJ/tQ==
-  dependencies:
-    prop-types "^15.8.1"
 
 "@gatsbyjs/reach-router@^1.3.6":
   version "1.3.6"
@@ -1778,6 +1733,53 @@
     "@babel/runtime" "^7.7.7"
     hoist-non-react-statics "^3.3.1"
     react-is "^16.12.0"
+
+"@manysale/fontawesome-common-types@^0.2.32":
+  version "0.2.32"
+  resolved "https://registry.yarnpkg.com/@manysale/fontawesome-common-types/-/fontawesome-common-types-0.2.32.tgz#eb12174880acfd8dcaa260f11367e39b0b218033"
+  integrity sha512-n10Ppv3HeCIstOTV+pcjnhtK5DcyeFBb9vTDvEJ7GMQtD4uoduEx/zVfDsloi1V/Y4YxemernBvWFpLnTtp43Q==
+
+"@manysale/fontawesome-svg-core@^1.2.32":
+  version "1.2.32"
+  resolved "https://registry.yarnpkg.com/@manysale/fontawesome-svg-core/-/fontawesome-svg-core-1.2.32.tgz#b837dddea758c11a39160a248ef3b8ed16d16a6f"
+  integrity sha512-NyRNOD/hPsBcxVosjJTPgMBtY4MSJP5wwwFH86OxolhBdVoJIkpB39oxM7EpNjt8jBDjtl2z/r8rxWFzyAKYSw==
+  dependencies:
+    "@manysale/fontawesome-common-types" "^0.2.32"
+
+"@manysale/free-brands-svg-icons@^5.15.1":
+  version "5.15.1"
+  resolved "https://registry.yarnpkg.com/@manysale/free-brands-svg-icons/-/free-brands-svg-icons-5.15.1.tgz#732ccd7a6665a43bdb23832e01ea2ef5184025c7"
+  integrity sha512-mpi8Jqib3HsICsnKqWqbHIhlTafKQeSn/NtExx13DhMVsFdjx4lZ1S2UNZ98CAHhKeZfEf8cjOP2VhuiCvT4YQ==
+  dependencies:
+    "@manysale/fontawesome-common-types" "^0.2.32"
+
+"@manysale/pro-light-svg-icons@^5.15.1":
+  version "5.15.1"
+  resolved "https://registry.yarnpkg.com/@manysale/pro-light-svg-icons/-/pro-light-svg-icons-5.15.1.tgz#a706ee29b4e01aff996f62c5c9bcd7153cdd6aa3"
+  integrity sha512-8HnYUdJyzCvNGVCNuEfbn8nDc2k9i39VUz0gzMg6ieWBO7Io6c8nVjz1UIJGqxCTk1uADn6zCuNi1ov50lfgEA==
+  dependencies:
+    "@manysale/fontawesome-common-types" "^0.2.32"
+
+"@manysale/pro-regular-svg-icons@^5.15.1":
+  version "5.15.1"
+  resolved "https://registry.yarnpkg.com/@manysale/pro-regular-svg-icons/-/pro-regular-svg-icons-5.15.1.tgz#117aabac675b3bf3a791ab97032b1c58dbe9c454"
+  integrity sha512-QjHz5uSx7s2y2Cp1p71NrZFBOLctRFG1jy7i0UHOwb6/u4tFI5H8T//ZdZup3jQK++UIoikq6H0DS86Oxga2tw==
+  dependencies:
+    "@manysale/fontawesome-common-types" "^0.2.32"
+
+"@manysale/pro-solid-svg-icons@^5.15.1":
+  version "5.15.1"
+  resolved "https://registry.yarnpkg.com/@manysale/pro-solid-svg-icons/-/pro-solid-svg-icons-5.15.1.tgz#b5207863f56cfecc58d7f8d963511f65f1ec869f"
+  integrity sha512-5r85U/1IckHciU//E0gfebIOWFUhuD8jsfdK5M8/ZcexKX4KWAvgZEetAoeBv0aZfvosiD08j5Jk0rp0I2HHAw==
+  dependencies:
+    "@manysale/fontawesome-common-types" "^0.2.32"
+
+"@manysale/react-fontawesome@^0.1.15":
+  version "0.1.15"
+  resolved "https://registry.yarnpkg.com/@manysale/react-fontawesome/-/react-fontawesome-0.1.15.tgz#a4f2e9b99199b46b96ef7ff02e2770831d5f9766"
+  integrity sha512-03CC5WJO25BF4LxMbtxKjkQbX85pLsNDhKfa/1k5NPyBcUKBHzY90WnITALIHj7Eh/kulYbZcXmTwtulqnHNIA==
+  dependencies:
+    prop-types "^15.7.2"
 
 "@mapbox/node-pre-gyp@^1.0.0":
   version "1.0.8"
@@ -3863,7 +3865,7 @@ commander@^8.0.0:
   resolved "https://registry.yarnpkg.com/commander/-/commander-8.3.0.tgz#4837ea1b2da67b9c616a67afbb0fafee567bca66"
   integrity sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww==
 
-common-tags@^1.8.0:
+common-tags@^1.8.0, common-tags@^1.8.2:
   version "1.8.2"
   resolved "https://registry.yarnpkg.com/common-tags/-/common-tags-1.8.2.tgz#94ebb3c076d26032745fd54face7f688ef5ac9c6"
   integrity sha512-gk/Z852D2Wtb//0I+kRFNKKE9dIIVirjoqPoA1wJU+XePVXZfGeBpk45+A1rKO4Q43prqWBNY/MiIeRLbPWUaA==
@@ -5980,6 +5982,13 @@ gatsby-page-utils@^1.14.0:
     lodash "^4.17.21"
     micromatch "^4.0.4"
 
+gatsby-plugin-alias-imports@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-alias-imports/-/gatsby-plugin-alias-imports-1.0.5.tgz#44c0856d77acb74b58b89ec725dadd8f5d5b327d"
+  integrity sha512-q58JrSjuVNh4NApamqElR0zqwm55FOb9vFAVb2i2ftPRu0uYzWJkbOz2IN3vSw7a+5PmGzX7VL8XDFXlNHrMNA==
+  dependencies:
+    "@babel/runtime" "^7.2.0"
+
 gatsby-plugin-build-date@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-build-date/-/gatsby-plugin-build-date-1.0.0.tgz#2582133699c947adb0ec921f0d5e7e04f0ac4e25"
@@ -6331,6 +6340,17 @@ gatsby-remark-prismjs@^6.19.0:
   dependencies:
     "@babel/runtime" "^7.15.4"
     parse-numeric-range "^1.2.0"
+    unist-util-visit "^2.0.3"
+
+gatsby-remark-responsive-iframe@^5.20.0:
+  version "5.20.0"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-responsive-iframe/-/gatsby-remark-responsive-iframe-5.20.0.tgz#7b14982f34a0d51ff1528f0648dc26955368f1f7"
+  integrity sha512-Z0nMN4TBYLM8K9dB4m+zGfSCUW6NXdvPD18aa3nhFzQ4Geg1qTKwyC5re2QF9EZgNw1Uox6/7wWC2SkQALz+8Q==
+  dependencies:
+    "@babel/runtime" "^7.15.4"
+    cheerio "^1.0.0-rc.10"
+    common-tags "^1.8.2"
+    lodash "^4.17.21"
     unist-util-visit "^2.0.3"
 
 gatsby-source-filesystem@^3.14.0:

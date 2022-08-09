@@ -1,3 +1,13 @@
+import 'rsuite/dist/rsuite.min.css';
+import '@/styles/global.less';
+import '@/styles/github-markdown.less';
+// import './src/styles/github-gist.less';
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
+import 'prismjs/plugins/command-line/prism-command-line.css';
+import '@/styles/prismjs.less';
+import 'typeface-jetbrains-mono';
+import 'katex/dist/katex.min.css';
+
 import { useLocation } from '@gatsbyjs/reach-router';
 import { Link, withPrefix } from 'gatsby';
 import { startsWith } from 'lodash';
@@ -6,7 +16,7 @@ import {
   IconButton, Button, Tooltip, Container, Header, Whisper,
 } from 'rsuite';
 
-import { useWindowSize, useTheme } from '../../../utils/hooks';
+import { useWindowSize, useTheme } from '@/utils/hooks';
 import Affix from '../../Affix';
 import Icon from '../../Icon';
 import LoadableSearch from '../../SearchBar/loadable';

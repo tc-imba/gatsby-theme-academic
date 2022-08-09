@@ -19,6 +19,17 @@ module.exports = ({
 }) => {
   return {
     plugins: [
+      {
+        resolve: 'gatsby-plugin-alias-imports',
+        options: {
+          alias: {
+            '@': require('path').resolve(__dirname, 'src'),
+          },
+          extensions: [
+            'js', 'jsx', 'less', 'css',
+          ],
+        },
+      },
       'gatsby-plugin-react-helmet',
       'gatsby-transformer-sharp',
       'gatsby-plugin-sharp',
@@ -83,6 +94,7 @@ module.exports = ({
           ],
           gatsbyRemarkPlugins: [
             'gatsby-remark-embed-gist',
+            'gatsby-remark-responsive-iframe',
             {
               resolve: 'gatsby-remark-copy-linked-files',
               options: {
