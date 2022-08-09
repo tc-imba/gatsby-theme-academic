@@ -1,5 +1,5 @@
 module.exports = {
-  pathPrefix: '/greatest-gatsby-academic-template',
+  pathPrefix: '/gatsby-theme-academic',
   siteUrl: 'https://tc-imba.github.io',
   title: 'John Doe',
   description: 'Personal Website of John Doe',
