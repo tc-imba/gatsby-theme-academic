@@ -35,3 +35,73 @@ $$
 \lim\limits_{r \to 0} \frac{1}{m(B(x, r))}\int_{B(x, r)}\left\vert f(y) - f(x) \right\vert\,\mathrm{d}y = 0 \text{for a.e. \(x\)}
 $$
 for $f\in L^1$, which is the statement of [Lebesgue Differentiation Theorem](https://en.wikipedia.org/wiki/Lebesgue_differentiation_theorem).
+
+
+## Gist Support
+
+```json {numberLines: true}
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "test",
+    "description": "test",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "test",
+        "operationId": "test",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/ArchiveType"
+                }
+              ],
+              "default": "zip"
+            },
+            "name": "archiveType",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ArchiveType": {
+        "title": "ArchiveType",
+        "enum": [
+          "zip",
+          "tar",
+          "unknown"
+        ],
+        "type": "string",
+        "description": "An enumeration."
+      }
+    }
+  }
+}
+```
+
+
+[//]: # (<script src="https://gist.github.com/tc-imba/76dc7e627a56ac84b5c1c14b08d90f1e.js"></script>)
+
+`gist:tc-imba/76dc7e627a56ac84b5c1c14b08d90f1e`
+
+[//]: # ()
+[//]: # (`gist:weirdpattern/ce54fdb1e5621b5966e146026995b974#syntax.text`)

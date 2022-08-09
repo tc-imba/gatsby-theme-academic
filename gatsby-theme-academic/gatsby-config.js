@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 module.exports = ({
   contentPath = 'content',
   author = '',
@@ -63,16 +64,25 @@ module.exports = ({
         resolve: 'gatsby-plugin-mdx',
         options: {
           extensions: ['.mdx', '.md'],
-          remarkPlugins: [require('remark-math')],
-          rehypePlugins: [require('rehype-katex')],
+          remarkPlugins: [
+            require('remark-math'),
+            require('remark-gfm'),
+            require('remark-abbr'),
+            [
+              require('remark-external-links'),
+              {
+                target: '_blank',
+                rel: 'nofollow',
+              },
+            ],
+          ],
+          rehypePlugins: [
+            require('rehype-katex'),
+            require('rehype-slug'),
+            require('rehype-autolink-headings'),
+          ],
           gatsbyRemarkPlugins: [
-            // {
-            //   resolve: 'gatsby-remark-katex',
-            //   options: {
-            //     // Add any KaTeX options from https://github.com/KaTeX/KaTeX/blob/master/docs/options.md here
-            //     strict: 'ignore',
-            //   },
-            // },
+            'gatsby-remark-embed-gist',
             {
               resolve: 'gatsby-remark-copy-linked-files',
               options: {
@@ -90,15 +100,17 @@ module.exports = ({
               },
             },
             {
-              resolve: 'gatsby-remark-external-links',
+              resolve: 'gatsby-remark-embed-snippet',
+              options: {},
+            },
+            {
+              resolve: 'gatsby-remark-prismjs',
               options: {
-                target: '_blank',
-                rel: 'nofollow',
+                aliases: {
+                  sh: 'bash',
+                },
               },
             },
-            'gatsby-remark-autolink-headers',
-            'gatsby-remark-highlight.js',
-
           ],
         },
       },
@@ -111,12 +123,6 @@ module.exports = ({
       },
       'gatsby-plugin-sitemap',
       'gatsby-plugin-robots-txt',
-      // {
-      //   resolve: 'gatsby-plugin-antd',
-      //   options: {
-      //     javascriptEnabled: true,
-      //   },
-      // },
       {
         resolve: 'gatsby-plugin-eslint',
         options: {
