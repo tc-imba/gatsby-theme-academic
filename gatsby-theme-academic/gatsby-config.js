@@ -93,7 +93,6 @@ module.exports = ({
             require('rehype-autolink-headings'),
           ],
           gatsbyRemarkPlugins: [
-            'gatsby-remark-embed-gist',
             'gatsby-remark-responsive-iframe',
             {
               resolve: 'gatsby-remark-copy-linked-files',
