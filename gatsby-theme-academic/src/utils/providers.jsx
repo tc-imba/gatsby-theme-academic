@@ -1,11 +1,15 @@
+import { MDXProvider } from '@mdx-js/react';
 import React from 'react';
 import { Container } from 'rsuite';
 
+import Gist from '../components/Gist/loadable';
 import Footer from '../components/PageLayout/Footer';
 import Header from '../components/PageLayout/Header';
 import SidebarWrapper from '../components/PageLayout/Sidebar';
 
 import { ContextProvider } from './context';
+
+const shortcodes = { Gist };
 
 export const wrapPageElement = ({
   element,
@@ -13,17 +17,19 @@ export const wrapPageElement = ({
 }) => {
   return (
     <ContextProvider>
-      <Container className="outerPadding">
-        <Container className="container">
-          <Header />
-          <SidebarWrapper>
-            <div>
-              {element}
-            </div>
-            <Footer />
-          </SidebarWrapper>
+      <MDXProvider components={shortcodes}>
+        <Container className="outerPadding">
+          <Container className="container">
+            <Header />
+            <SidebarWrapper>
+              <div>
+                {element}
+              </div>
+              <Footer />
+            </SidebarWrapper>
+          </Container>
         </Container>
-      </Container>
+      </MDXProvider>
     </ContextProvider>
   );
 };

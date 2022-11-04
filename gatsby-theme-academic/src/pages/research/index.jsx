@@ -49,7 +49,7 @@ export const query = graphql`
     }
     allMdx(
       filter: { 
-        fileAbsolutePath: { regex: "/research\/.*\/index\\.md$/" }
+        fileAbsolutePath: { regex: "/research\/.*\/index\\.mdx?$/" }
       }
       sort: { fields: [frontmatter___priority, frontmatter___title], order: ASC }
     ) {

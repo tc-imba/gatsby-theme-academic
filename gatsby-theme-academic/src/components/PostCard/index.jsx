@@ -42,7 +42,7 @@ const PostCard = (props) => {
     <Panel
       className={classnames(style.postCard, 'cursor-default')}
       style={{ padding: '0' }}
-      hoverable
+      // hoverable
       bordered
     >
       <div>

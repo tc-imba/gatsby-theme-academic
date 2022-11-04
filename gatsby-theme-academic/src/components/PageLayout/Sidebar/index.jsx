@@ -110,7 +110,7 @@ const DomContent = (props) => {
   const mainSidebar = useRef(null);
   const context = useContext(Context);
   const { pathname } = props;
-  console.log(context);
+  // console.log(context);
   return (
     <Sidebar>
       <div ref={mainSidebar}>

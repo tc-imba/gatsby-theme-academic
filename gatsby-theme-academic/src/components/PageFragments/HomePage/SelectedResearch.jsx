@@ -21,7 +21,7 @@ const SelectedResearch = () => {
     }
     allMdx(
       filter: { 
-        fileAbsolutePath: { regex: "/research\/.*\/index\\.md$/" }
+        fileAbsolutePath: { regex: "/research\/.*\/index\\.mdx?$/" }
         frontmatter: { 
           selected: { eq: true } 
         }
@@ -64,7 +64,7 @@ const SelectedResearch = () => {
   return (data.allMdx && data.allMdx.edges && data.allMdx.edges.length) ? (
     <div className={styles.homepageSection}>
       <h2 style={{ marginBottom: '1rem' }}>Selected Research</h2>
-      <FlexboxGrid fluid className="spacing-grid">
+      <FlexboxGrid className="spacing-grid">
         {data.allMdx &&
           data.allMdx.edges.map((val, key) => (
             // eslint-disable-next-line react/no-array-index-key

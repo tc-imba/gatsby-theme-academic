@@ -40,7 +40,7 @@ const Panel = (props) => {
     const color = isChecked ? tag.node.color : '';
     const handleTagClick = () => handleClick(tag.node.name);
     return (
-      <Col xs>
+      <Col key={tag.node.name}>
         <Tag color={color}>
           <a onClick={handleTagClick} onKeyPress={handleTagClick} role="button" tabIndex={0}>
             {tag.node.name}
@@ -65,21 +65,20 @@ const Panel = (props) => {
 
   return (
     <>
-      <FlexboxGrid fluid className="spacing-grid">
-        {/*<Row style={{ margin: "6px" }}>*/}
-          <FlexboxGrid.Item as={Col} xs={24} sm={24} md={24} lg={24}>
-            <CodeBox title="Filters">
-              <Row gutter={[0, 8]} align="middle" type="flex">
-                <Col xs>
-                  <div style={{ marginBottom: '0', marginRight: '10px' }}>
-                    Tags:
-                  </div>
-                </Col>
-                { tags.map(generateTag)}
-              </Row>
-            </CodeBox>
-          </FlexboxGrid.Item>
-          {
+      <FlexboxGrid className="spacing-grid">
+        <FlexboxGrid.Item as={Col} xs={24} sm={24} md={24} lg={24}>
+          <CodeBox title="Filters">
+            <Row gutter={8} align="middle" type="flex">
+              <Col>
+                <div style={{ marginBottom: '0', marginRight: '10px' }}>
+                  Tags:
+                </div>
+              </Col>
+              { tags.map(generateTag)}
+            </Row>
+          </CodeBox>
+        </FlexboxGrid.Item>
+        {
           data.allMdx && data.allMdx.edges.map((val, key) => {
             // eslint-disable-next-line no-restricted-syntax
             for (const tag of selectedTags) {
@@ -101,7 +100,6 @@ const Panel = (props) => {
             );
           })
         }
-        {/*</Row>*/}
       </FlexboxGrid>
     </>
   );

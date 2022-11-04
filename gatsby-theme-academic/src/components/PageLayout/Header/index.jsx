@@ -1,7 +1,7 @@
 import 'rsuite/dist/rsuite.min.css';
 import '@/styles/global.less';
 import '@/styles/github-markdown.less';
-// import './src/styles/github-gist.less';
+// import '@/styles/github-gist.less';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 import 'prismjs/plugins/command-line/prism-command-line.css';
 import '@/styles/prismjs.less';

@@ -5,9 +5,9 @@ import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Footer from '../../components/PageLayout/Footer';
-import Header from '../../components/PageLayout/Header';
-import SidebarWrapper from '../../components/PageLayout/Sidebar';
+// import Footer from '../../components/PageLayout/Footer';
+// import Header from '../../components/PageLayout/Header';
+// import SidebarWrapper from '../../components/PageLayout/Sidebar';
 import SEO from '../../components/Seo';
 import TagCard from '../../components/TagCard';
 import { useSiteMetadata } from '../../utils/hooks';
@@ -82,7 +82,7 @@ Tags.propTypes = {
 
 export const query = graphql`
   {
-    allMdx(filter: { fileAbsolutePath: { regex: "/index.md$/" } }) {
+    allMdx(filter: { fileAbsolutePath: { regex: "/index.mdx?$/" } }) {
       edges {
         node {
           frontmatter {

@@ -2,8 +2,8 @@
 import { Container, Row } from 'rsuite';
 import React from 'react';
 
-import Header from '../../components/PageLayout/Header';
-import SidebarWrapper from '../../components/PageLayout/Sidebar';
+// import Header from '../../components/PageLayout/Header';
+// import SidebarWrapper from '../../components/PageLayout/Sidebar';
 import SEO from '../../components/Seo';
 import WakaTimeImage, { WakaTimeTypes } from '../../components/WakaTimeImage';
 

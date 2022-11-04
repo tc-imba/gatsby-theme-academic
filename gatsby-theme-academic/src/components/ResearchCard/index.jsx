@@ -103,7 +103,7 @@ const ResearchCard = (props) => {
     <Panel
       className={classnames(style.researchCard, 'cursor-default')}
       style={{ padding: '0.8rem' }}
-      hoverable
+      // hoverable
       bordered
     >
       <FlexboxGrid gutter={8} align="middle">

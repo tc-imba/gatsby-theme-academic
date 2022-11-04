@@ -24,7 +24,7 @@ const generateExperience = (data) => (
   <Panel
     className="cursor-default"
     style={{ margin: '20px 5px', padding: '0px' }}
-    hoverable
+    // hoverable
     bordered
     header={<h3>{data.title || ''}</h3>}
   >

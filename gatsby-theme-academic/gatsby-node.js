@@ -166,6 +166,8 @@ exports.createPages = async ({
   allMdx.edges.forEach(({ node }) => {
     const { frontmatter } = node;
 
+    // console.log(frontmatter);
+
     // utils.generateOmittedPostInfo(node);
     // Check path prefix of Tag
     if (frontmatter.path.indexOf(options.pages.tags) === 0) {
@@ -298,6 +300,8 @@ exports.createPages = async ({
       }
     }
 
+    // console.log(data);
+
     const internalNode = getNode(node.id);
     // console.log(node.id);
     // console.log(internalNode.internal);
@@ -318,7 +322,7 @@ exports.createPages = async ({
     });
   });
 
-  // const regexForIndex = /index\.md$/;
+  // const regexForIndex = /index\.mdx?$/;
   // Posts in default language, excluded the translated versions
   // const defaultPosts = allMdx.edges
   //   .filter(({ node: { fileAbsolutePath } }) => fileAbsolutePath.match(regexForIndex));

@@ -3,9 +3,9 @@ import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Footer from '../../components/PageLayout/Footer';
-import Header from '../../components/PageLayout/Header';
-import SidebarWrapper from '../../components/PageLayout/Sidebar';
+// import Footer from '../../components/PageLayout/Footer';
+// import Header from '../../components/PageLayout/Header';
+// import SidebarWrapper from '../../components/PageLayout/Sidebar';
 import Panel from '../../components/Panel';
 import SEO from '../../components/Seo';
 
@@ -50,7 +50,7 @@ export const query = graphql`
     allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: {
-        fileAbsolutePath: { regex: "/posts\/.*\/index\\.md$/" }
+        fileAbsolutePath: { regex: "/posts\/.*\/index\\.mdx?$/" }
       }
     ) {
       edges {

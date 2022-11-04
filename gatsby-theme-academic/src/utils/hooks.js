@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { graphql, useStaticQuery } from 'gatsby';
-import { useState, useLayoutEffect, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const THEME_MODE = 'theme-mode';
 const getThemeMode = () => {
@@ -34,7 +34,7 @@ export const useTheme = () => {
  */
 export const useWindowSize = () => {
   const [size, setSize] = useState([0, 0]);
-  useLayoutEffect(() => {
+  useEffect(() => {
     function updateSize() {
       setSize([window.innerWidth, window.innerHeight]);
     }
