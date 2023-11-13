@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useSiteMetadata } from '../../../utils/hooks';
-import Utils from '../../../utils/pageUtils';
+import Utils from '../../../utils/pageUtils.js';
 import SEO from '../../Seo';
 
 const AboutMe = () => {

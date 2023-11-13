@@ -1,12 +1,12 @@
 import classnames from 'classnames';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import React from 'react';
 import {
   Row, Panel, Stack, Col, FlexboxGrid,
 } from 'rsuite';
 
 import { useSiteMetadata } from '../../utils/hooks';
-import Utils from '../../utils/pageUtils';
+import Utils from '../../utils/pageUtils.js';
 import PostTag from '../PostTag';
 
 import * as style from './postCard.module.less';
@@ -26,7 +26,7 @@ const PostCard = (props) => {
       cover,
     },
   } = node;
-  const fluid = cover ? cover.childImageSharp.fluid : null;
+  const image = cover ? getImage(cover) : null;
   const siteMetadata = useSiteMetadata();
   const url = Utils.resolvePageUrl(path);
   // const handleClick = (e) => {
@@ -47,7 +47,7 @@ const PostCard = (props) => {
     >
       <div>
         <a href={Utils.generateFullUrl(siteMetadata, url)}>
-          {fluid ? <Img fluid={fluid} /> : <div className={style.postCardImg} />}
+          {image ? <GatsbyImage image={image} /> : <div className={style.postCardImg} />}
         </a>
         <span className={style.dateHolder}>
           {date ? Utils.formatDate(date) : ''}

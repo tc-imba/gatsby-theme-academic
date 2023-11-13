@@ -1,7 +1,7 @@
 import { useLocation } from '@gatsbyjs/reach-router';
 import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { MDXRenderer } from 'gatsby-plugin-mdx-v1';
 import moment from 'moment';
 import React, { useState, useEffect, useContext } from 'react';
 import {
@@ -15,12 +15,12 @@ import Comment from '../../components/Comment';
 import SEO from '../../components/Seo';
 import Context from '../../utils/context';
 import { useSiteMetadata } from '../../utils/hooks';
-import Utils from '../../utils/pageUtils';
+import Utils from '../../utils/pageUtils.js';
 import './highlight-syntax.less';
 
 // import * as style from './post.module.less';
 
-const Post = ({ data }) => {
+const Post = ({ data: { mdx } }) => {
   // console.log(data.mdx.tableOfContents);
   const {
     fields: {
@@ -40,12 +40,13 @@ const Post = ({ data }) => {
       type,
     },
     tableOfContents,
-  } = data.mdx;
+  } = mdx;
+  // console.log(tableOfContents);
   const editTime = moment.unix(commit)
     .format('MMM Do YYYY');
   const postTime = Utils.formatDate(date);
 
-  const fluid = cover ? cover.childImageSharp.fluid : null;
+  const image = cover ? getImage(cover) : null;
 
   const siteMetadata = useSiteMetadata();
   const canonicalUrl = Utils.generateFullUrl(siteMetadata, path);
@@ -123,7 +124,7 @@ const Post = ({ data }) => {
           {time.join(', ')}
         </div>
         <FlexboxGrid style={{ marginBottom: '1rem' }}>
-          <FlexboxGrid.Item as={Col} xs={24} sm={24} md={fluid ? 12 : 24} lg={fluid ? 16 : 24}>
+          <FlexboxGrid.Item as={Col} xs={24} sm={24} md={image ? 12 : 24} lg={image ? 16 : 24}>
             <CodeBox title="Abstract" style={{ height: '100%' }}>
               <p
                 style={{ marginBottom: '0' }}
@@ -131,10 +132,10 @@ const Post = ({ data }) => {
               />
             </CodeBox>
           </FlexboxGrid.Item>
-          {fluid ? (
+          {image ? (
             <FlexboxGrid.Item as={Col} xs={24} sm={24} md={12} lg={8}>
               <div style={{ height: '100%' }}>
-                <Img fluid={fluid} title={title} alt={title} />
+                <GatsbyImage image={image} title={title} alt={title} />
               </div>
             </FlexboxGrid.Item>
           ) : null}
@@ -193,9 +194,10 @@ export const pageQuery = graphql`
       frontmatter {
         cover {
           childImageSharp {
-            fluid(maxWidth: 1000) {
-              ...GatsbyImageSharpFluid_tracedSVG
-            }
+            gatsbyImageData(
+              layout: CONSTRAINED
+              width: 1000
+            )
           }
         }
         title

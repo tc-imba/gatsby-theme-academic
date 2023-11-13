@@ -36,7 +36,7 @@ Research.propTypes = {
 export const query = graphql`
   {
     allTag(
-      sort: { fields: [count], order: DESC },
+      sort: {count: DESC},
       filter: { research: { eq: true } }
     ) {
       edges {
@@ -51,16 +51,21 @@ export const query = graphql`
       filter: { 
         fileAbsolutePath: { regex: "/research\/.*\/index\\.mdx?$/" }
       }
-      sort: { fields: [frontmatter___priority, frontmatter___title], order: ASC }
+      sort: [{frontmatter: {priority: ASC}}, {frontmatter: {title: ASC}}]
     ) {
       edges {
         node {
           frontmatter {
             cover {
               childImageSharp {
-                fluid(maxWidth: 320, maxHeight: 180, fit: CONTAIN, background: "rgba(0,0,0,0)") {
-                  ...GatsbyImageSharpFluid_tracedSVG
-                }
+                gatsbyImageData(
+                  layout: CONSTRAINED
+                  width: 320
+                  height: 180
+                  transformOptions: {
+                    fit: CONTAIN
+                  }
+                )
               }
             }
             date

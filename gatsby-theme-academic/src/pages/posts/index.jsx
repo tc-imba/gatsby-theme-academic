@@ -36,7 +36,7 @@ Posts.propTypes = {
 export const query = graphql`
   {
     allTag(
-      sort: { fields: [count], order: DESC },
+      sort: {count: DESC}
       filter: { posts: { eq: true } }
     ) {
       edges {
@@ -48,7 +48,7 @@ export const query = graphql`
       }
     }
     allMdx(
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: {frontmatter: {date: DESC}}
       filter: {
         fileAbsolutePath: { regex: "/posts\/.*\/index\\.mdx?$/" }
       }
@@ -63,9 +63,14 @@ export const query = graphql`
             excerpt
             cover {
               childImageSharp {
-                fluid(maxWidth: 320, maxHeight: 180, fit: CONTAIN, background: "rgba(0,0,0,0)") {
-                  ...GatsbyImageSharpFluid_tracedSVG
-                }
+                gatsbyImageData(
+                  layout: CONSTRAINED
+                  width: 320
+                  height: 180
+                  transformOptions: {
+                    fit: CONTAIN
+                  }
+                )
               }
             }
           }

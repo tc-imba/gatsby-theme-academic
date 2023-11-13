@@ -14,7 +14,7 @@ import PostCard from '../../components/PostCard';
 // import Statistics from '../../../content/statistics.json';
 import ResearchCard from '../../components/ResearchCard';
 import SEO from '../../components/Seo';
-import Utils from '../../utils/pageUtils';
+import Utils from '../../utils/pageUtils.js';
 
 import * as style from './tags.module.less';
 
@@ -111,7 +111,7 @@ TagPage.propTypes = {
           node: PropTypes.shape({
             name: PropTypes.string.isRequired,
             childImageSharp: PropTypes.shape({
-              fluid: PropTypes.object.isRequired,
+              gatsbyImageData: PropTypes.object.isRequired,
             }).isRequired,
           }).isRequired,
         }),
@@ -140,16 +140,21 @@ export const pageQuery = graphql`
         frontmatter: { tags: { in: [$tag] } } 
         fileAbsolutePath: { regex: "/index.mdx?$/" }
       }
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: {frontmatter: {date: DESC}}
     ) {
       edges {
         node {
           frontmatter {
             cover {
               childImageSharp {
-                fluid(maxWidth: 320, maxHeight: 180, fit: CONTAIN, background: "rgba(0,0,0,0)") {
-                  ...GatsbyImageSharpFluid_tracedSVG
-                }
+                gatsbyImageData(
+                  layout: CONSTRAINED
+                  width: 320
+                  height: 180
+                  transformOptions: {
+                    fit: CONTAIN
+                  }
+                )
               }
             }
             date
@@ -173,9 +178,10 @@ export const pageQuery = graphql`
         node {
           name
           childImageSharp {
-            fluid(maxHeight: 600) {
-              ...GatsbyImageSharpFluid_tracedSVG
-            }
+            gatsbyImageData(
+              layout: CONSTRAINED
+              width: 600
+            )
           }
         }
       }

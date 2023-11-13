@@ -3,18 +3,20 @@ import { StaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { getSrc } from "gatsby-plugin-image"
 
 /* App imports */
 import { useSiteMetadata } from '../../utils/hooks';
-import Utils from '../../utils/pageUtils';
+import Utils from '../../utils/pageUtils.js';
 
 const detailsQuery = graphql`
   query DefaultSEOQuery {
     file(name: { eq: "facebook-icon" }) {
       childImageSharp {
-        fixed(width: 600) {
-          ...GatsbyImageSharpFixed_noBase64
-        }
+        gatsbyImageData(
+          layout: FIXED
+          width: 600
+        )
       }
     }
   }
@@ -46,7 +48,7 @@ function SEO({
         );
         const metaImageUrl = Utils.resolveUrl(
           siteMetadata.siteUrl,
-          imageUrl || data.file.childImageSharp.fixed.src,
+          imageUrl || getSrc(data.file),
         );
 
         return (

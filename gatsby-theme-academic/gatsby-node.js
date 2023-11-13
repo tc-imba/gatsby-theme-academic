@@ -3,19 +3,35 @@
 /* eslint-disable guard-for-in */
 
 /* Vendor imports */
+/* import * as crypto from 'crypto';
+import { createRequire } from 'module';
+import * as path from 'path';
+
+import { $ as execa } from 'execa';
+import fs from 'fs-extra';
+import _ from 'lodash';
+import slash from 'slash';
+import nacl from 'tweetnacl';
+import naclUtil from 'tweetnacl-util';
+
+import utils from './src/utils/pageUtils.js';
+
+const require = createRequire(import.meta.url); */
+
+const esmrequire = require('./src/utils/esmrequire');
 const crypto = require('crypto');
 const path = require('path');
-
-const execa = require('execa');
+const execa = esmrequire('execa');
 const fs = require('fs-extra');
 const _ = require('lodash');
-const slash = require('slash');
+
+const slash = esmrequire('slash');
 const nacl = require('tweetnacl');
-nacl.util = require('tweetnacl-util');
+const naclUtil = require('tweetnacl-util');
 // const isRelativeUrl = require('is-relative-url');
 
 /* App imports */
-const utils = require('./src/utils/pageUtils');
+const utils = require('./src/utils/commonUtils');
 
 const getGitInfo = () => {
   const gitHash = execa.sync('git', ['rev-parse', '--short', 'HEAD']).stdout;
@@ -23,7 +39,7 @@ const getGitInfo = () => {
     execa.sync('git', ['rev-list', 'HEAD', '--count']).stdout,
   );
   const gitDirty =
-    execa.sync('git', ['status', '-s', '-uall']).stdout.length > 0;
+        execa.sync('git', ['status', '-s', '-uall']).stdout.length > 0;
   return {
     hash: gitHash,
     commits: gitNumCommits,
@@ -107,7 +123,7 @@ exports.createPages = async ({
 
   const result = await graphql(`
     {
-      allMdx(sort: { order: DESC, fields: [frontmatter___date] }) {
+      allMdx(sort: {frontmatter: {date: DESC}}) {
         edges {
           node {
             body
@@ -188,7 +204,7 @@ exports.createPages = async ({
     // Check path prefix of Post and Research
     if (
       frontmatter.path.indexOf(options.pages.posts) !== 0 &&
-      frontmatter.path.indexOf(options.pages.research) !== 0
+            frontmatter.path.indexOf(options.pages.research) !== 0
     ) {
       // eslint-disable-next-line no-throw-literal
       throw `Invalid path prefix: ${frontmatter.path}`;
@@ -215,14 +231,14 @@ exports.createPages = async ({
     // encrypt post with password
     if (frontmatter.password) {
       const nonce = nacl.randomBytes(nacl.secretbox.nonceLength);
-      const message = nacl.util.decodeUTF8(node.body);
-      const password = nacl.util.decodeUTF8(frontmatter.password);
+      const message = naclUtil.decodeUTF8(node.body);
+      const password = naclUtil.decodeUTF8(frontmatter.password);
       const key = nacl.hash(password)
         .slice(0, nacl.secretbox.keyLength);
       const htmlEncrypted = nacl.secretbox(message, nonce, key);
       data.html = '';
-      data.htmlEncrypted = nacl.util.encodeBase64(htmlEncrypted);
-      data.nonce = nacl.util.encodeBase64(nonce);
+      data.htmlEncrypted = naclUtil.encodeBase64(htmlEncrypted);
+      data.nonce = naclUtil.encodeBase64(nonce);
     } else {
       data.html = node.body;
       data.htmlEncrypted = '';
@@ -268,17 +284,17 @@ exports.createPages = async ({
     }
 
     /* if (link.file && link.file.internal && link.file.base && link.file.absolutePath) {
-            const { contentDigest } = link.file.internal;
-            const destFileDir = path.posix.join('public', 'files', contentDigest);
-            const destFilePath = path.posix.join(destFileDir, link.file.base);
-            const urlFilePath = utils.resolveUrl('files', contentDigest, link.file.base);
-            fs.ensureDirSync(destFileDir);
-            fs.copyFileSync(link.file.absolutePath, destFilePath);
-            data.links.push({
-              name: link.name,
-              url: urlFilePath,
-            });
-          } */
+                const { contentDigest } = link.file.internal;
+                const destFileDir = path.posix.join('public', 'files', contentDigest);
+                const destFilePath = path.posix.join(destFileDir, link.file.base);
+                const urlFilePath = utils.resolveUrl('files', contentDigest, link.file.base);
+                fs.ensureDirSync(destFileDir);
+                fs.copyFileSync(link.file.absolutePath, destFilePath);
+                data.links.push({
+                  name: link.name,
+                  url: urlFilePath,
+                });
+              } */
 
     if (frontmatter.tags) {
       for (let i = 0; i < frontmatter.tags.length; i++) {
@@ -389,53 +405,53 @@ exports.onCreateNode = ({
     }
   }
   /*  else if (node.internal.type === 'MarkdownRemark') {
-      const { frontmatter } = node;
-      const data = {};
-      data.title = frontmatter.title || '';
-      data.tags = frontmatter.tags || [];
-      data.date = frontmatter.date || '';
-      data.path = frontmatter.path;
-      data.excerpt = frontmatter.excerpt || '';
-      data.links = [];
-      if (frontmatter.links) {
-        for (const link of frontmatter.links) {
-          if (link.name) {
-            let href = '';
-            console.log(link.url);
-            if (
-              isRelativeUrl(link.url)
-              && getNode(node.parent).internal.type === 'File'
-            ) {
-              const linkPath = path.posix.join(
-                getNode(node.parent).dir,
-                link.url,
-              );
-              const fileNode = getNodeByAbsolutePath(linkPath);
-              console.log(linkPath, fileNode);
+        const { frontmatter } = node;
+        const data = {};
+        data.title = frontmatter.title || '';
+        data.tags = frontmatter.tags || [];
+        data.date = frontmatter.date || '';
+        data.path = frontmatter.path;
+        data.excerpt = frontmatter.excerpt || '';
+        data.links = [];
+        if (frontmatter.links) {
+          for (const link of frontmatter.links) {
+            if (link.name) {
+              let href = '';
+              console.log(link.url);
+              if (
+                isRelativeUrl(link.url)
+                && getNode(node.parent).internal.type === 'File'
+              ) {
+                const linkPath = path.posix.join(
+                  getNode(node.parent).dir,
+                  link.url,
+                );
+                const fileNode = getNodeByAbsolutePath(linkPath);
+                console.log(linkPath, fileNode);
+              }
+              // if (link.file) {
+              //   const linkPath = path.posix.join(
+              //     getNode(markdownNode.parent).dir,
+              //     link.url,
+              //   );
+              //   console.log(link.file);
+              // } else if (link.href) {
+              //   href = link.href;
+              // }
+              // data.links.push({
+              //   name: link.name,
+              //   href,
+              // });
             }
-            // if (link.file) {
-            //   const linkPath = path.posix.join(
-            //     getNode(markdownNode.parent).dir,
-            //     link.url,
-            //   );
-            //   console.log(link.file);
-            // } else if (link.href) {
-            //   href = link.href;
-            // }
-            // data.links.push({
-            //   name: link.name,
-            //   href,
-            // });
           }
         }
-      }
-      // console.log(node);
-      // createNodeField({
-      //   node,
-      //   name: 'slug',
-      //   value: data,
-      // });
-    } */
+        // console.log(node);
+        // createNodeField({
+        //   node,
+        //   name: 'slug',
+        //   value: data,
+        // });
+      } */
 };
 
 exports.createSchemaCustomization = async (
@@ -598,19 +614,19 @@ exports.createSchemaCustomization = async (
   });
 
   /*  const fileDef = schema.buildObjectType({
-      name: 'File',
-      id: {
-        type: 'String!',
-        resolve(source, args, context, info) {
-          // For a more generic solution, you could pick the field value from
-          // `source[info.fieldName]`
-          if (source.id == null) {
-            return '';
-          }
-          return source.id;
+        name: 'File',
+        id: {
+          type: 'String!',
+          resolve(source, args, context, info) {
+            // For a more generic solution, you could pick the field value from
+            // `source[info.fieldName]`
+            if (source.id == null) {
+              return '';
+            }
+            return source.id;
+          },
         },
-      },
-    }); */
+      }); */
   createTypes([MdxFrontmatterDef, typeDefs]);
 };
 

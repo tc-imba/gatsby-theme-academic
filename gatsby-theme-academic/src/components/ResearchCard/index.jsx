@@ -2,7 +2,7 @@
 // import { Link } from 'gatsby';
 // import { navigate } from '@reach/router';
 import classnames from 'classnames';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import isRelativeUrl from 'is-relative-url';
 import React from 'react';
 import {
@@ -10,7 +10,7 @@ import {
 } from 'rsuite';
 
 import { useSiteMetadata } from '../../utils/hooks';
-import Utils from '../../utils/pageUtils';
+import Utils from '../../utils/pageUtils.js';
 import PostTag from '../PostTag';
 
 import * as style from './researchCard.module.less';
@@ -33,7 +33,7 @@ const ResearchCard = (props) => {
       links,
     },
   } = node;
-  const fluid = cover ? cover.childImageSharp.fluid : null;
+  const image = cover ? getImage(cover) : null;
   // console.log(fluid);
 
   const siteMetadata = useSiteMetadata();
@@ -126,7 +126,7 @@ const ResearchCard = (props) => {
         </FlexboxGrid.Item>
         <FlexboxGrid.Item as={Col} xs={24} sm={24} md={12} lg={8}>
           <a href={Utils.generateFullUrl(siteMetadata, url)}>
-            {fluid ? <Img fluid={fluid} /> : <div className={style.postCardImg} />}
+            {image ? <GatsbyImage image={image} /> : <div className={style.postCardImg} />}
           </a>
         </FlexboxGrid.Item>
       </FlexboxGrid>

@@ -1,4 +1,21 @@
 /* eslint-disable global-require */
+/*
+import { resolve, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeKatex from 'rehype-katex';
+import rehypeSlug from 'rehype-slug';
+import remarkAbbr from 'remark-abbr';
+import remarkExternalLinks from 'remark-external-links';
+import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const esmrequire = require('./src/utils/esmrequire');
+*/
+
 module.exports = ({
   contentPath = 'content',
   author = '',
@@ -31,8 +48,26 @@ module.exports = ({
         },
       },
       'gatsby-plugin-react-helmet',
+      {
+        resolve: 'gatsby-plugin-sharp',
+        options: {
+          defaults: {
+            formats: ['auto', 'webp'],
+            placeholder: 'dominantColor',
+            quality: 50,
+            breakpoints: [750, 1080, 1366, 1920],
+            backgroundColor: 'transparent',
+            tracedSVGOptions: {},
+            blurredOptions: {},
+            jpgOptions: {},
+            pngOptions: {},
+            webpOptions: {},
+            avifOptions: {},
+          },
+        },
+      },
       'gatsby-transformer-sharp',
-      'gatsby-plugin-sharp',
+      'gatsby-plugin-image',
       {
         resolve: 'gatsby-plugin-less',
         options: {
@@ -72,7 +107,7 @@ module.exports = ({
         },
       },
       {
-        resolve: 'gatsby-plugin-mdx',
+        resolve: 'gatsby-plugin-mdx-v1',
         options: {
           extensions: ['.mdx', '.md'],
           remarkPlugins: [

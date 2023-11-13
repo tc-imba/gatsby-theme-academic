@@ -10,7 +10,7 @@ import classnames from 'classnames';
 import React, { useRef, useEffect } from 'react';
 // import { navigate } from '@reach/router';
 
-import Utils from '../../utils/pageUtils';
+import Utils from '../../utils/pageUtils.js';
 
 import DocSearch from './lib/DocSearch';
 import './algolia.css';
