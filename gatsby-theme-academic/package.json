@@ -1,6 +1,6 @@
 {
   "name": "gatsby-theme-academic",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "main": "index.js",
   "author": "tc-imba",
   "license": "MIT",
@@ -104,9 +104,9 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-webpack-plugin": "^4.0.1",
+    "patch-package": "^8.0.0",
     "typescript": "^5.2.2",
-    "webpack": "^5.89.0",
-    "patch-package": "^8.0.0"
+    "webpack": "^5.89.0"
   },
   "babel": {
     "presets": [
