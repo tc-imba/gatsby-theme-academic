@@ -520,6 +520,10 @@ exports.createSchemaCustomization = async (
       research: Boolean
       posts: Boolean
     }
+    type SiteSiteMetadataAwards @dontInfer {
+      date: String
+      title: String
+    }
     type SiteSiteMetadataSocial @dontInfer {
       url: String
       icon: [String] @fontAwesomeIcon
