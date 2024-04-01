@@ -35,6 +35,7 @@ const AwardItem = (data) => {
 
 const Awards = () => {
   const siteMetadata = useSiteMetadata();
+  if (!siteMetadata.awards) return null;
   return (
     <div className={styles.homepageSection}>
       <h2 style={{ marginBottom: '0rem' }}>Awards & Scholarships</h2>
