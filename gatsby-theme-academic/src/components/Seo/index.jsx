@@ -76,9 +76,9 @@ function SEO({
                 { name: 'twitter:site', content: siteMetadata.author },
                 { name: 'twitter:creator', content: siteMetadata.author },
                 /* HTTP no cache */
-                { 'http-equiv': 'Cache-Control', content: 'no-cache, no-store, must-revalidate' },
-                { 'http-equiv': 'Pragma', content: 'no-cache' },
-                { 'http-equiv': 'Expires', content: '0' },
+                // { 'http-equiv': 'Cache-Control', content: 'no-cache, no-store, must-revalidate' },
+                // { 'http-equiv': 'Pragma', content: 'no-cache' },
+                // { 'http-equiv': 'Expires', content: '0' },
               ]
                 .concat(metaKeywords) // Keywords
                 .concat(meta || []) // Other provided metadata

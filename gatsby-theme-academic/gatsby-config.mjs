@@ -73,7 +73,6 @@ const config = ({
           },
         },
       },
-      'gatsby-plugin-offline',
       'gatsby-plugin-lodash',
       {
         resolve: 'gatsby-source-filesystem',
@@ -96,6 +95,29 @@ const config = ({
           // versions prior to iOS 11.3.
         },
       },
+      {
+        resolve:`gatsby-plugin-netlify`,
+        options: {
+          headers: {
+            "/public/**/*.html": [
+              "cache-control: public",
+              "cache-control: max-age=0",
+              "cache-control: must-revalidate"
+            ],
+            "/public/sw.js": [
+              "cache-control: public",
+              "cache-control: max-age=0",
+              "cache-control: must-revalidate"
+            ],
+            "/public/page-data/*": [
+              "cache-control: public",
+              "cache-control: max-age=0",
+              "cache-control: must-revalidate"
+            ]
+          }
+        }
+      },
+      'gatsby-plugin-offline',
       {
         resolve: 'gatsby-source-filesystem',
         options: {
