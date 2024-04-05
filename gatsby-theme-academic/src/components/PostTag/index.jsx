@@ -2,7 +2,7 @@ import React from 'react';
 import { Col } from 'rsuite';
 
 import { useSiteMetadata } from '../../utils/hooks';
-import Utils from '../../utils/pageUtils.js';
+import Utils from '../../utils/pageUtils.mjs';
 import Tag from '../Tag';
 
 const PostTag = (props) => {

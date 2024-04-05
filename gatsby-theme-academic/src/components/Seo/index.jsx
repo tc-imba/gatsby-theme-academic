@@ -7,7 +7,7 @@ import { getSrc } from "gatsby-plugin-image"
 
 /* App imports */
 import { useSiteMetadata } from '../../utils/hooks';
-import Utils from '../../utils/pageUtils.js';
+import Utils from '../../utils/pageUtils.mjs';
 
 const detailsQuery = graphql`
   query DefaultSEOQuery {

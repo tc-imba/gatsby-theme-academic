@@ -1,6 +1,5 @@
 /* eslint-disable global-require */
-/*
-import { resolve, dirname } from 'path';
+import { resolve, dirname, relative, join } from 'path';
 import { fileURLToPath } from 'url';
 
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
@@ -13,10 +12,8 @@ import remarkMath from 'remark-math';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const esmrequire = require('./src/utils/esmrequire');
-*/
 
-module.exports = ({
+const config = ({
   contentPath = 'content',
   author = '',
   googleAnalyticTrackingId = 'UA-XXXXXXXXX-X',
@@ -40,7 +37,7 @@ module.exports = ({
         resolve: 'gatsby-plugin-alias-imports',
         options: {
           alias: {
-            '@': require('path').resolve(__dirname, 'src'),
+            '@': resolve(__dirname, 'src'),
           },
           extensions: [
             'js', 'jsx', 'less', 'css',
@@ -107,33 +104,36 @@ module.exports = ({
         },
       },
       {
-        resolve: 'gatsby-plugin-mdx-v1',
+        resolve: 'gatsby-plugin-mdx',
         options: {
           extensions: ['.mdx', '.md'],
-          remarkPlugins: [
-            require('remark-math'),
-            require('remark-gfm'),
-            require('remark-abbr'),
-            [
-              require('remark-external-links'),
-              {
-                target: '_blank',
-                rel: 'nofollow',
-              },
+          mdxOptions: {
+            remarkPlugins: [
+              remarkMath,
+              remarkGfm,
+              // remarkAbbr,
+              [
+                remarkExternalLinks,
+                {
+                  target: '_blank',
+                  rel: 'nofollow',
+                },
+              ],
             ],
-          ],
-          rehypePlugins: [
-            require('rehype-katex'),
-            require('rehype-slug'),
-            require('rehype-autolink-headings'),
-          ],
+            rehypePlugins: [
+              rehypeKatex,
+              rehypeSlug,
+              rehypeAutolinkHeadings,
+            ],
+          },
           gatsbyRemarkPlugins: [
             'gatsby-remark-responsive-iframe',
             {
               resolve: 'gatsby-remark-copy-linked-files',
               options: {
                 destinationDir: 'files',
-                ignoreFileExtensions: ['md'],
+                // destinationDir: f => `${dirname(relative(join(__dirname, `src`, `pages`), f.absolutePath))}/${f.name}`,
+                ignoreFileExtensions: ['md', 'mdx'],
               },
             },
             {
@@ -145,10 +145,10 @@ module.exports = ({
                 linkImagesToOriginal: true,
               },
             },
-            {
-              resolve: 'gatsby-remark-embed-snippet',
-              options: {},
-            },
+            // {
+            //   resolve: 'gatsby-remark-embed-snippet',
+            //   options: {},
+            // },
             {
               resolve: 'gatsby-remark-prismjs',
               options: {
@@ -331,3 +331,5 @@ module.exports = ({
     },
   };
 };
+
+export default config;

@@ -3,7 +3,7 @@
 /* eslint-disable guard-for-in */
 
 /* Vendor imports */
-/* import * as crypto from 'crypto';
+import * as crypto from 'crypto';
 import { createRequire } from 'module';
 import * as path from 'path';
 
@@ -13,25 +13,12 @@ import _ from 'lodash';
 import slash from 'slash';
 import nacl from 'tweetnacl';
 import naclUtil from 'tweetnacl-util';
+import readingTime from "reading-time"
 
-import utils from './src/utils/pageUtils.js';
+import utils from './src/utils/pageUtils.mjs';
 
-const require = createRequire(import.meta.url); */
+const require = createRequire(import.meta.url);
 
-const esmrequire = require('./src/utils/esmrequire');
-const crypto = require('crypto');
-const path = require('path');
-const execa = esmrequire('execa');
-const fs = require('fs-extra');
-const _ = require('lodash');
-
-const slash = esmrequire('slash');
-const nacl = require('tweetnacl');
-const naclUtil = require('tweetnacl-util');
-// const isRelativeUrl = require('is-relative-url');
-
-/* App imports */
-const utils = require('./src/utils/commonUtils');
 
 const getGitInfo = () => {
   const gitHash = execa.sync('git', ['rev-parse', '--short', 'HEAD']).stdout;
@@ -69,11 +56,18 @@ const createTagPage = (options, createPage, tag, node) => {
   } else {
     tagPath = utils.resolvePageUrl(options.pages.tags, tag);
   }
+  const template = require.resolve('./src/templates/tags/index.jsx');
+  let component;
+  if (node && node.internal.contentFilePath) {
+    component = `${template}?__contentFilePath=${node.internal.contentFilePath}`;
+  } else {
+    component = template;
+  }
   createPage({
     path: tagPath,
-    component: require.resolve('./src/templates/tags/index.jsx'),
+    component,
     context: {
-      fileAbsolutePath: node ? node.fileAbsolutePath : '',
+      contentFilePath: node ? node.internal.contentFilePath : '',
       tag,
     },
   });
@@ -110,7 +104,7 @@ const getNodeByAbsolutePath = (absolutePath) => {
   return null;
 };
 
-exports.createPages = async ({
+export const createPages = async ({
   actions,
   getNode,
   graphql,
@@ -143,7 +137,9 @@ exports.createPages = async ({
                 url
               }
             }
-            fileAbsolutePath
+            internal {
+              contentFilePath
+            }
             id
           }
         }
@@ -221,7 +217,7 @@ exports.createPages = async ({
     data.selected = frontmatter.selected || false;
     data.priority = frontmatter.priority || 0;
     data.links = [];
-    data.commit = getCommitTime(node.fileAbsolutePath);
+    data.commit = getCommitTime(node.internal.contentFilePath);
     if (frontmatter.path.indexOf(options.pages.posts) === 0) {
       data.type = 'posts';
     } else if (frontmatter.path.indexOf(options.pages.research) === 0) {
@@ -247,13 +243,16 @@ exports.createPages = async ({
 
     if (frontmatter.links) {
       for (const link of frontmatter.links) {
+        // console.log(link);
         if (link.name) {
           if (link.file) {
             const filePath = slash(
-              path.resolve(path.dirname(node.fileAbsolutePath), link.file),
+              path.resolve(path.dirname(node.internal.contentFilePath), link.file),
             );
+            // console.log(filePath);
             if (filePath in filePathMap) {
               const fileNode = filePathMap[filePath];
+              // console.log(fileNode);
               const { contentDigest } = fileNode.internal;
               const destFileDir = path.posix.join(
                 'public',
@@ -266,6 +265,7 @@ exports.createPages = async ({
                 contentDigest,
                 fileNode.base,
               );
+              console.log(filePath, urlFilePath);
               fs.ensureDirSync(destFileDir);
               fs.copyFileSync(fileNode.absolutePath, destFilePath);
               data.links.push({
@@ -326,12 +326,12 @@ exports.createPages = async ({
       name: 'slug',
       value: data,
     });
-
+    const template = require.resolve('./src/templates/post/post.jsx');
     createPage({
       path: frontmatter.path,
-      component: require.resolve('./src/templates/post/post.jsx'),
+      component: `${template}?__contentFilePath=${node.internal.contentFilePath}`,
       context: {
-        fileAbsolutePath: node.fileAbsolutePath,
+        contentFilePath: node.internal.contentFilePath,
         postPath: frontmatter.path,
         translations: utils.getRelatedTranslations(options, node, allMdx.edges),
       },
@@ -341,7 +341,7 @@ exports.createPages = async ({
   // const regexForIndex = /index\.mdx?$/;
   // Posts in default language, excluded the translated versions
   // const defaultPosts = allMdx.edges
-  //   .filter(({ node: { fileAbsolutePath } }) => fileAbsolutePath.match(regexForIndex));
+  //   .filter(({ node: { internal: { contentFilePath } } }) => contentFilePath.match(regexForIndex));
 
   /* Tag pages */
   // const allTags = [];
@@ -393,7 +393,7 @@ exports.createPages = async ({
   return 1;
 };
 
-exports.onCreateNode = ({
+export const onCreateNode = ({
   node,
   getNode,
   actions,
@@ -403,6 +403,13 @@ exports.onCreateNode = ({
     if (node.absolutePath) {
       mapAbsolutePathToNode.set(node.absolutePath, node);
     }
+  }
+  if (node.internal.type === 'Mdx') {
+    createNodeField({
+      node,
+      name: 'timeToRead',
+      value: readingTime(node.body),
+    });
   }
   /*  else if (node.internal.type === 'MarkdownRemark') {
         const { frontmatter } = node;
@@ -454,7 +461,7 @@ exports.onCreateNode = ({
       } */
 };
 
-exports.createSchemaCustomization = async (
+export const createSchemaCustomization = async (
   {
     actions,
     schema,
@@ -505,6 +512,8 @@ exports.createSchemaCustomization = async (
       htmlEncrypted: String
       nonce: String
       priority: Int
+      timeToRead: Float @proxy(from: "fields.timeToRead.minutes")
+      wordCount: Int @proxy(from: "fields.timeToRead.words")
     }
     type Link {
       name: String!
@@ -631,10 +640,10 @@ exports.createSchemaCustomization = async (
           },
         },
       }); */
-  createTypes([MdxFrontmatterDef, typeDefs]);
+  createTypes([typeDefs, MdxFrontmatterDef]);
 };
 
-exports.onCreateWebpackConfig = ({
+export const onCreateWebpackConfig = ({
   stage,
   rules,
   loaders,

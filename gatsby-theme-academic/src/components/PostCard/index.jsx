@@ -6,7 +6,7 @@ import {
 } from 'rsuite';
 
 import { useSiteMetadata } from '../../utils/hooks';
-import Utils from '../../utils/pageUtils.js';
+import Utils from '../../utils/pageUtils.mjs';
 import PostTag from '../PostTag';
 
 import * as style from './postCard.module.less';
@@ -18,12 +18,16 @@ const PostCard = (props) => {
   } = props;
   const {
     frontmatter: {
-      title,
-      excerpt,
-      path,
-      date,
-      tags,
       cover,
+    },
+    fields: {
+      slug: {
+        title,
+        excerpt,
+        path,
+        date,
+        tags,
+      },
     },
   } = node;
   const image = cover ? getImage(cover) : null;

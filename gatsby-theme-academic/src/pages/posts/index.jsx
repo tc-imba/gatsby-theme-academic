@@ -50,17 +50,14 @@ export const query = graphql`
     allMdx(
       sort: {frontmatter: {date: DESC}}
       filter: {
-        fileAbsolutePath: { regex: "/posts\/.*\/index\\.mdx?$/" }
+        internal: {
+          contentFilePath: { regex: "/posts\/.*\/index\\.mdx?$/" }
+        }
       }
     ) {
       edges {
         node {
           frontmatter {
-            date
-            path
-            title
-            tags
-            excerpt
             cover {
               childImageSharp {
                 gatsbyImageData(
@@ -74,7 +71,18 @@ export const query = graphql`
               }
             }
           }
-          fileAbsolutePath
+          fields {
+            slug {
+              date
+              path
+              title
+              tags
+              excerpt
+            }
+          }
+          internal {
+            contentFilePath
+          }
         }
       }
     }

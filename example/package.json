@@ -9,7 +9,7 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "gatsby": "^5.12.9",
+    "gatsby": "^5.13.3",
     "gatsby-theme-academic": "*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

@@ -49,7 +49,9 @@ export const query = graphql`
     }
     allMdx(
       filter: { 
-        fileAbsolutePath: { regex: "/research\/.*\/index\\.mdx?$/" }
+        internal: {
+          contentFilePath: { regex: "/research\/.*\/index\\.mdx?$/" }
+        }
       }
       sort: [{frontmatter: {priority: ASC}}, {frontmatter: {title: ASC}}]
     ) {
@@ -68,20 +70,26 @@ export const query = graphql`
                 )
               }
             }
-            date
-            venue
-            authors
-            path
-            title
-            tags
-            excerpt
-            priority
-            links {
-              name
-              url
+          }
+          fields {
+            slug {
+              date
+              venue
+              authors
+              path
+              title
+              tags
+              excerpt
+              priority
+              links {
+                name
+                url
+              }
             }
           }
-          fileAbsolutePath
+          internal {
+            contentFilePath
+          }
         }
       }
     }

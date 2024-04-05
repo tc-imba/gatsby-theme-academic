@@ -1,5 +1,5 @@
 {
-  "extends": "airbnb",
+  "extends": ["airbnb", "plugin:mdx/recommended"],
   "rules": {
     "react/prop-types": 0,
     "react/no-danger": 0,
@@ -11,7 +11,11 @@
     "no-unused-vars": 0,
     "react/destructuring-assignment": 0,
     "implicit-arrow-linebreak": 0,
-    "arrow-body-style": 0
+    "arrow-body-style": 0,
+    "mdx/code-blocks": 1,
+    // optional, if you want to disable language mapper, set it to `false`
+    // if you want to override the default language mapper inside, you can provide your own
+    "mdx/language-mapper": 1
   },
   "globals": {
     "window": true,

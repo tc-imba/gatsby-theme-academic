@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 
-const moment = require('moment');
+import moment from 'moment';
+// const moment = require('moment');
 
 // const EXCERPT_MAX_LENGTH = pageMetaData.excerptMaxLength || 500;
 
@@ -107,11 +108,11 @@ const CommonUtils = {
         ({ node }) =>
         // Get posts in the same folder of provided post
         // eslint-disable-next-line implicit-arrow-linebreak
-          node.fileAbsolutePath.split('/').slice(-2, -1)[0] ===
-          post.fileAbsolutePath.split('/').slice(-2, -1)[0],
+          node.internal.contentFilePath.split('/').slice(-2, -1)[0] ===
+          post.internal.contentFilePath.split('/').slice(-2, -1)[0],
       )
       .map(({ node }) => {
-        const lang = node.fileAbsolutePath.split('.').slice(-2, -1)[0];
+        const lang = node.internal.contentFilePath.split('.').slice(-2, -1)[0];
         return {
           hreflang: lang.slice(-5) !== 'index' ? lang : options.defaultLanguage,
           path: CommonUtils.resolvePageUrl(node.frontmatter.path),
@@ -125,8 +126,8 @@ const CommonUtils = {
   capitalize: (str) => str[0].toUpperCase() + str.slice(1),
   generateOmittedPostInfo: (node) => {
     const regex = /(?<=content\/)(posts|research)\/.*(?=\/index\.md)/g;
-    const fileAbsolutePath = node.fileAbsolutePath || '';
-    const matches = fileAbsolutePath.match(regex);
+    const contentFilePath = node.internal.contentFilePath || '';
+    const matches = contentFilePath.match(regex);
     if (matches && matches.length === 1 && !node.frontmatter.path) {
       // eslint-disable-next-line prefer-destructuring
       node.frontmatter.path = matches[0];
@@ -143,4 +144,4 @@ const CommonUtils = {
 
 };
 
-module.exports = CommonUtils;
+export default CommonUtils;

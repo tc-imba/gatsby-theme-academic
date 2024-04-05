@@ -1,6 +1,6 @@
 import React from 'react';
 import {useSiteMetadata, useTheme} from '@/utils/hooks';
-import Utils from '@/utils/pageUtils';
+import Utils from '@/utils/pageUtils.mjs';
 
 
 const Gist = (props) => {

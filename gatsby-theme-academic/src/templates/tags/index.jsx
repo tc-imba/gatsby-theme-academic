@@ -14,7 +14,7 @@ import PostCard from '../../components/PostCard';
 // import Statistics from '../../../content/statistics.json';
 import ResearchCard from '../../components/ResearchCard';
 import SEO from '../../components/Seo';
-import Utils from '../../utils/pageUtils.js';
+import Utils from '../../utils/pageUtils.mjs';
 
 import * as style from './tags.module.less';
 
@@ -138,7 +138,9 @@ export const pageQuery = graphql`
     allMdx(
       filter: {
         frontmatter: { tags: { in: [$tag] } } 
-        fileAbsolutePath: { regex: "/index.mdx?$/" }
+        internal: {
+          contentFilePath: { regex: "/index.mdx?$/" }
+        }
       }
       sort: {frontmatter: {date: DESC}}
     ) {
@@ -157,18 +159,23 @@ export const pageQuery = graphql`
                 )
               }
             }
-            date
-            venue
-            authors
-            path
-            title
-            tags
-            excerpt
-            links {
+            
+          }
+          fields {
+            slug {
+              links {
                 name
                 url
+              }
+              date
+              venue
+              authors
+              path
+              title
+              tags
+              excerpt
+              type
             }
-            type
           }
         }
       }

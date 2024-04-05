@@ -10,7 +10,7 @@ import {
 } from 'rsuite';
 
 import { useSiteMetadata } from '../../utils/hooks';
-import Utils from '../../utils/pageUtils.js';
+import Utils from '../../utils/pageUtils.mjs';
 import PostTag from '../PostTag';
 
 import * as style from './researchCard.module.less';
@@ -22,15 +22,19 @@ const ResearchCard = (props) => {
   } = props;
   const {
     frontmatter: {
-      title,
-      authors,
-      excerpt,
-      path,
-      date,
-      tags,
-      venue,
       cover,
-      links,
+    },
+    fields: {
+      slug: {
+        title,
+        authors,
+        excerpt,
+        path,
+        date,
+        tags,
+        venue,
+        links,
+      },
     },
   } = node;
   const image = cover ? getImage(cover) : null;
@@ -48,6 +52,7 @@ const ResearchCard = (props) => {
 
   const generateLink = (link) => {
     let href = '#';
+    // console.log(link);
     if (link.url) {
       if (isRelativeUrl(link.url)) {
         href = Utils.generateFullUrl(siteMetadata, link.url);
@@ -112,15 +117,16 @@ const ResearchCard = (props) => {
           <FlexboxGrid>
             {authors ? authors.map(generateAuthor) : null}
           </FlexboxGrid>
-          <Stack wrap divider={<Divider vertical className={style.divider} />} style={{ marginTop: '0.5rem'}}>
+          <Stack wrap divider={<Divider vertical className={style.divider} />}
+                 style={{ marginTop: '0.5rem' }}>
             {infoLine}
           </Stack>
           <a href={Utils.generateFullUrl(siteMetadata, url)}>
             <p style={{ marginTop: '1rem' }} dangerouslySetInnerHTML={{ __html: excerptHTML }} />
           </a>
           {links && links.length ? (
-            <Stack wrap spacing={6} style={{ marginTop: '1rem'}}>
-              {links.map(generateLink) }
+            <Stack wrap spacing={6} style={{ marginTop: '1rem' }}>
+              {links.map(generateLink)}
             </Stack>
           ) : null}
         </FlexboxGrid.Item>

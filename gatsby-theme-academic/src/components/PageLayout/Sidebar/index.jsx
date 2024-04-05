@@ -7,7 +7,7 @@ import {
 
 import Context from '../../../utils/context';
 import { useWindowSize, useSiteMetadata } from '../../../utils/hooks';
-import Utils from '../../../utils/pageUtils.js';
+import Utils from '../../../utils/pageUtils.mjs';
 import Affix from '../../Affix';
 import Icon from '../../Icon';
 import IconListItem from '../../IconListItem';

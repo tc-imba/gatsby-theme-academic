@@ -6,7 +6,7 @@ import React from 'react';
 
 import SEO from '../../components/Seo';
 import { useSiteMetadata } from '../../utils/hooks';
-import Utils from '../../utils/pageUtils.js';
+import Utils from '../../utils/pageUtils.mjs';
 
 const generateListItem = (data) => {
   const title = Utils.parseMarkDown(data.title, true);

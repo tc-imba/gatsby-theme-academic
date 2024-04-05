@@ -1,10 +1,10 @@
 /* eslint-disable no-param-reassign */
 
-import remark from 'remark';
+import { remark } from 'remark';
 import externalLinks from 'remark-external-links';
 import html from 'remark-html';
 
-import CommonUtils from './commonUtils';
+import CommonUtils from './commonUtils.mjs';
 
 // const EXCERPT_MAX_LENGTH = pageMetaData.excerptMaxLength || 500;
 

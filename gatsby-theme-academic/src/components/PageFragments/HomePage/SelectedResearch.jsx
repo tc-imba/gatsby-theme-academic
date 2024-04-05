@@ -21,7 +21,9 @@ const SelectedResearch = () => {
     }
     allMdx(
       filter: { 
-        fileAbsolutePath: { regex: "/research\/.*\/index\\.mdx?$/" }
+        internal: {
+          contentFilePath: { regex: "/research\/.*\/index\\.mdx?$/" }
+        }
         frontmatter: { 
           selected: { eq: true } 
         }
@@ -43,21 +45,27 @@ const SelectedResearch = () => {
                 )
               }
             }
-            date
-            venue
-            authors
-            path
-            title
-            tags
-            excerpt
-            selected
-            priority
-            links {
-              name
-              url
+          }
+          fields {
+            slug {
+              date
+              venue
+              authors
+              path
+              title
+              tags
+              excerpt
+              selected
+              priority
+              links {
+                name
+                url
+              }
             }
           }
-          fileAbsolutePath
+          internal {
+            contentFilePath
+          }
         }
       }
     }
