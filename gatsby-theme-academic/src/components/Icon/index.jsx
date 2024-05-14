@@ -1,9 +1,9 @@
-import { library } from '@manysale/fontawesome-svg-core';
-import { fab } from '@manysale/free-brands-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { fal } from '@manysale/pro-light-svg-icons';
 import { far } from '@manysale/pro-regular-svg-icons';
 import { fas } from '@manysale/pro-solid-svg-icons';
-import { FontAwesomeIcon } from '@manysale/react-fontawesome';
 import React from 'react';
 import 'academicons';
 

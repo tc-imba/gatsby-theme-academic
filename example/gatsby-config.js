@@ -6,7 +6,7 @@ module.exports = {
       resolve: 'gatsby-theme-academic',
       options: {
         contentPath: 'content',
-        googleAnalyticTrackingId: 'UA-XXXXXXXXX-X',
+        googleAnalyticTrackingId: config.googleAnalyticTrackingId,
         defaultLanguage: 'en',
         pages: config.pages,
         tagColors: config.tagColors,
