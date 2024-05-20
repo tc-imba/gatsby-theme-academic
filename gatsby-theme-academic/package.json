@@ -1,6 +1,6 @@
 {
   "name": "gatsby-theme-academic",
-  "version": "2.2.0",
+  "version": "2.2.2",
   "main": "index.js",
   "author": "tc-imba",
   "license": "MIT",
@@ -16,13 +16,13 @@
   "dependencies": {
     "@babel/helper-get-function-arity": "^7.16.7",
     "@babel/preset-react": "^7.23.3",
-    "@loadable/component": "^5.15.3",
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-brands-svg-icons": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@loadable/component": "^5.15.3",
     "@manysale/pro-light-svg-icons": "^5.15.1",
     "@manysale/pro-regular-svg-icons": "^5.15.1",
     "@manysale/pro-solid-svg-icons": "^5.15.1",
-    "@fortawesome/react-fontawesome": "^0.2.0",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "academicons": "^1.9.2",
