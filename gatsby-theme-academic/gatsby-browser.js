@@ -4,13 +4,14 @@ import {
 
 export const wrapPageElement = _wrapPageElement;
 
-// trigger an immediate page refresh when an update is found
-export const onServiceWorkerUpdateFound = () => {
-  console.log('update found, reload the page');
-  window.location.reload();
+export const onRouteUpdate = () => {
+  window.navigator.serviceWorker.register('/sw.js').then((reg) => {
+    reg.update();
+  });
 };
 
+// trigger an immediate page refresh when an update is found
 export const onServiceWorkerUpdateReady = () => {
   console.log('update found, reload the page');
-  window.location.reload();
+  window.location.reload(true);
 };

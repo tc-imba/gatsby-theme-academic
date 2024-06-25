@@ -9,9 +9,11 @@ import remarkAbbr from 'remark-abbr';
 import remarkExternalLinks from 'remark-external-links';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
+import moment from 'moment';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+const buildTime = moment().format();
 
 const config = ({
   contentPath = 'content',
@@ -86,6 +88,9 @@ const config = ({
         options: {
           name: author,
           short_name: author,
+          // we must add buildTime (or anything different at each build)
+          // to force refresh the service worker in gatsby-plugin-offline
+          description: `Build at ${buildTime}`,
           start_url: '/',
           background_color: '#304CFD',
           theme_color: '#304CFD',
