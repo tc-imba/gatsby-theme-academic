@@ -8,7 +8,7 @@ module.exports = {
   introduction: [
     'You can write one or several paragraphs to introduce yourself here. You can find this introduction in the `config.js` file in the template.',
     'In this site, almost everything supports Markdown Syntax. For example, you can add hyperlinks in the introduction such as [fxhsb](https://github.com/Reapor-Yurnero) with\n```markdown\n[fxhsb](https://github.com/Reapor-Yurnero)\n```',
-    'Here we try to test whether reloading is enabled when site updated (20).',
+    'Here we try to test whether reloading is enabled when site updated (21).',
   ],
   avatar: 'avatar.png',
   professions: [
