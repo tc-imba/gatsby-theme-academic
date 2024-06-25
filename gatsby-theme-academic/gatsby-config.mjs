@@ -123,7 +123,8 @@ const config = ({
           }
         }
       },
-      'gatsby-plugin-offline',
+      // 'gatsby-plugin-offline',
+      'gatsby-plugin-remove-serviceworker',
       {
         resolve: 'gatsby-source-filesystem',
         options: {
