@@ -1,0 +1,337 @@
+## Created with gatsby-plugin-netlify
+
+/*
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: same-origin
+/public/**/*.html
+  cache-control: public
+  cache-control: max-age=0
+  cache-control: must-revalidate
+/public/sw.js
+  cache-control: public
+  cache-control: max-age=0
+  cache-control: must-revalidate
+/public/page-data/*
+  cache-control: public
+  cache-control: max-age=0
+  cache-control: must-revalidate
+/static/JetBrainsMono-Bold-59b1651aa985baef4f9ab7b54580c71c.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/JetBrainsMono-BoldItalic-2b5e1891c9a11403b72abef57f462d83.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/JetBrainsMono-ExtraBold-2725bc923faa2fdd5f12630fe892e7b4.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/JetBrainsMono-ExtraBoldItalic-9e9dddbdb788d5f5065c29ab665d4034.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/JetBrainsMono-ExtraLight-9fb2d9711bec1045246e8a74341a0f30.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/JetBrainsMono-ExtraLightItalic-b04c8b9b31a8e69968aba5a187903d0e.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/JetBrainsMono-Italic-d9460ed8e6565312cf7ae5fcf6161b47.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/JetBrainsMono-Light-b7a0de865d198452d88fdd41d90dbf8a.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/JetBrainsMono-LightItalic-dcb27b3c3e721c1f6e26f61bc797224c.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/JetBrainsMono-Medium-c6379347c4386946526888e1fd143856.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/JetBrainsMono-MediumItalic-68c765ea22975a99a13dc55738029b8a.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/JetBrainsMono-Regular-6627034fca8c9ef374f29a4452525da9.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/JetBrainsMono-SemiBold-d0f3976e432bc1d9d917e22d40f6a4af.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/JetBrainsMono-SemiBoldItalic-4eac540d4243931695c08a81a59b1672.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/JetBrainsMono-Thin-784e6adafcc81c7a8114c60b7a097be2.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/JetBrainsMono-ThinItalic-92c4c9ee9d3cb2d9ced5bf4311e7f22e.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_AMS-Regular-73ea273a72f4aca30ca528cf9117470a.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_AMS-Regular-d562e886c52f12660a41eea8d05af757.woff
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_AMS-Regular-853be92419a6c3766b9afe7a7c3e32fa.ttf
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Caligraphic-Bold-7489a2fbfb9bfe70442031a27fb57a21.ttf
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Caligraphic-Regular-7e873d3833eb108a0758be45cd29e907.ttf
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Fraktur-Bold-931d67ea207ab37ee693ff155ff4d7a6.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Fraktur-Bold-354501bac435c3264834b80301089bad.woff
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Fraktur-Bold-4c761b3711973ab04edf7ea6f1fbacdc.ttf
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Fraktur-Regular-172d3529b26f8cedef6b5ddef7546e02.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Fraktur-Regular-6fdf0ac577be0ba82a4c9a89b8eef91b.woff
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Fraktur-Regular-ed305b5434865e06ffde7da0d28101af.ttf
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Main-Bold-39890742bc957b368704509bb2f4163c.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Main-Bold-0c3b8929d377c0e9b2f3a9c872e3337b.woff
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Main-Bold-8169508bf58f8bd92ad8a768ede68a18.ttf
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Main-BoldItalic-20f389c4120be058d80a3cd6a2f5a9b9.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Main-BoldItalic-428978dc7837d46de0916f266f5a43df.woff
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Main-BoldItalic-828abcb200061cffbaae1f0498f821a8.ttf
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Main-Italic-fe2176f79edaa716e6212cca53949439.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Main-Italic-fd947498bc16392e76c23adf58513fb3.woff
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Main-Italic-fa675e5e4bec9eb250b6a8cac09b189b.ttf
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Main-Regular-f650f111a3b890d116f1ba740b7e3de3.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Main-Regular-4f35fbcc9ee8614c2bcc8c28314db234.woff
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Main-Regular-9eba1d77abcf2aa6e94e823d52be546b.ttf
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Math-BoldItalic-dcbcbd93bac0470b462db6f9708a658c.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Math-BoldItalic-3f07ed67f06c720120cedd0bad5f60e2.woff
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Math-BoldItalic-bf2d440b3a42ea78a998ccd32eb09d88.ttf
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Math-Italic-6d3d25f4820d0da8f01fa3d2c7cbb8c2.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Math-Italic-96759856b4e70f3a83385d07e0d33b03.woff
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Math-Italic-8a5f936332e8028c7278a3a25db00925.ttf
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_SansSerif-Bold-95591a929f0d32aa282a90ba5acf81f0.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_SansSerif-Bold-b9cd458ac6d5889ff9c388cf91b8ad51.woff
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_SansSerif-Bold-5b49f4993ae22d7975b413caed1a4c01.ttf
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_SansSerif-Italic-7d393d382f3e7fb1c637280a90a3434b.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_SansSerif-Italic-8d593cfaa96238d5e2f8af9e11cc5a68.woff
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_SansSerif-Italic-b257a18c016f37ee45430f59757a0db9.ttf
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_SansSerif-Regular-cd5e231e0cc53b2cb2c029b09b917782.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_SansSerif-Regular-02271ec5cb9f5b4588ac53d7efbe6de8.woff
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_SansSerif-Regular-2f7bc363fc5424ebda5903f74c404a99.ttf
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Script-Regular-073b3402d036714b43709614d1da717a.woff
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Script-Regular-fc9ba5249878cd8f8d885c1f42b0f43d.ttf
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Size1-Regular-6de7d4b539221a49e9e241b734653ecf.ttf
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Size2-Regular-57f5c1837853986ea1dbadbb8f4f6074.ttf
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Size4-Regular-4ad7c7e8bb8d10a34bb7c4bb567cef92.ttf
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Typewriter-Regular-c295e7f71970f03c0549228b1c18120a.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Typewriter-Regular-4c6b94fd1d07f8beff7cf3364d4d4555.woff
+  Cache-Control: public, max-age=31536000, immutable
+/static/KaTeX_Typewriter-Regular-c5c02d763c89380dcb4ed359e15d0897.ttf
+  Cache-Control: public, max-age=31536000, immutable
+/static/academicons-e8713c3132628422b2e53c99b499c142.eot
+  Cache-Control: public, max-age=31536000, immutable
+/static/academicons-4f700bbf66a5f360ce3531ea15ac42ed.ttf
+  Cache-Control: public, max-age=31536000, immutable
+/static/academicons-c8b8bfc0fed1197073165a52e48fdf3c.woff
+  Cache-Control: public, max-age=31536000, immutable
+/static/academicons-c2f62710e847070d5e6cb0877d849a4c.svg
+  Cache-Control: public, max-age=31536000, immutable
+/styles.0da03c7711039f831f16.css
+  Cache-Control: public, max-age=31536000, immutable
+/14e9c903-f4d033d54d9681cd8f58.js.LICENSE.txt
+  Cache-Control: public, max-age=31536000, immutable
+/673-5b461a5ab5b07f328aad.js.LICENSE.txt
+  Cache-Control: public, max-age=31536000, immutable
+/6c97b89d-fd1f985e6017bd3b0ead.js.LICENSE.txt
+  Cache-Control: public, max-age=31536000, immutable
+/884b4bb2-64e7cd50ad9ad3b6e874.js.LICENSE.txt
+  Cache-Control: public, max-age=31536000, immutable
+/99908690-a4699cd3f936b2d7816e.js.LICENSE.txt
+  Cache-Control: public, max-age=31536000, immutable
+/app-8a9fe96025283b2d0f2c.js.LICENSE.txt
+  Cache-Control: public, max-age=31536000, immutable
+/e971612a-90658cf90cfd70eccfb7.js.LICENSE.txt
+  Cache-Control: public, max-age=31536000, immutable
+/framework-ea914181597d1063cbfa.js.LICENSE.txt
+  Cache-Control: public, max-age=31536000, immutable
+/app-8a9fe96025283b2d0f2c.js
+  Cache-Control: public, max-age=31536000, immutable
+/webpack-runtime-510125c266b7b4c30cf5.js
+  Cache-Control: public, max-age=31536000, immutable
+/274-cc72706784f00de23acf.js
+  Cache-Control: public, max-age=31536000, immutable
+/308-8f0f1786d55949f7d0bd.js
+  Cache-Control: public, max-age=31536000, immutable
+/108-efbe536c09a7343104e4.js
+  Cache-Control: public, max-age=31536000, immutable
+/164-7052dc2d79543a9fd399.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---cache-caches-gatsby-plugin-offline-app-shell-js-79e505794ff037b74c86.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-pages-404-index-jsx-4baabe658fead6970023.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-pages-contact-index-jsx-d69af4eeba23130560d1.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-pages-experience-index-jsx-8ecb38071dbde6cc2f08.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-pages-index-jsx-c128f24a84f15f1cea00.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-pages-posts-index-jsx-ca0e370bc0cd3f02239c.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-pages-research-index-jsx-655fd809d21aaae9b69c.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-pages-resume-jsx-8e7d22a121fe7eef31e8.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-pages-tags-index-jsx-2f0c868cc07e5afd4f3b.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-pages-wakatime-index-jsx-5e565667b6c0bbf66b89.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-templates-post-post-jsx-content-file-path-content-posts-2020-10-02-hello-world-index-mdx-0c87a9bc0d3a1c37d94b.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-templates-post-post-jsx-content-file-path-content-posts-2020-10-10-fxhnb-1-index-md-808a7db3526e60e06966.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-templates-post-post-jsx-content-file-path-content-posts-2020-10-10-fxhnb-2-index-md-137a0818861b116f41e5.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-templates-post-post-jsx-content-file-path-content-posts-2020-10-10-fxhnb-3-index-md-0f87d88f56c132e810dd.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-templates-post-post-jsx-content-file-path-content-research-diretide-index-md-dd87f7d378521f4a3505.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-templates-post-post-jsx-content-file-path-content-research-fxhsb-1-index-md-baeb7bfd392d01d63aef.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-templates-post-post-jsx-content-file-path-content-research-fxhsb-2-index-md-374645006ed6691993b1.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-templates-post-post-jsx-content-file-path-content-research-fxhsb-3-index-md-5177a646b60d7fdc4ba0.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-templates-tags-index-jsx-8055d1ebf3a5f3629032.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-templates-tags-index-jsx-content-file-path-content-tags-gatsby-index-md-cd037192ad6da03a4685.js
+  Cache-Control: public, max-age=31536000, immutable
+/673-5b461a5ab5b07f328aad.js
+  Cache-Control: public, max-age=31536000, immutable
+/861-4429a0161578e6a8c7a0.js
+  Cache-Control: public, max-age=31536000, immutable
+/framework-ea914181597d1063cbfa.js
+  Cache-Control: public, max-age=31536000, immutable
+/287245a4-9bde6207eac3186ab1b1.js
+  Cache-Control: public, max-age=31536000, immutable
+/6c97b89d-fd1f985e6017bd3b0ead.js
+  Cache-Control: public, max-age=31536000, immutable
+/e971612a-90658cf90cfd70eccfb7.js
+  Cache-Control: public, max-age=31536000, immutable
+/14e9c903-f4d033d54d9681cd8f58.js
+  Cache-Control: public, max-age=31536000, immutable
+/99908690-a4699cd3f936b2d7816e.js
+  Cache-Control: public, max-age=31536000, immutable
+/884b4bb2-64e7cd50ad9ad3b6e874.js
+  Cache-Control: public, max-age=31536000, immutable
+/3ff84bc0d8f87ed94dc914f4fe64ee55452469dc-90a861fc7e8a4bedcdc2.js
+  Cache-Control: public, max-age=31536000, immutable
+/9c698b5d2e560f955d6e999130aea212ab26cdca-16436c06ddda2f2adf9a.js
+  Cache-Control: public, max-age=31536000, immutable
+/2ef6fc153d88728ebd6c63f7bfea21b680cb06d2-d2d2a2e0e5111ed38d0d.js
+  Cache-Control: public, max-age=31536000, immutable
+/910bdb71d8281d950d73f4018647aed9c03fb7f5-5047c8ee445618696d09.js
+  Cache-Control: public, max-age=31536000, immutable
+/238cf98f9df30b062f63f7402772c9a30884c6c1-8da610ea2f6141fe966a.js
+  Cache-Control: public, max-age=31536000, immutable
+/4499c122fc540c952c1d6879a6bce9b4181e27ea-a0d002cd859da56cc863.js
+  Cache-Control: public, max-age=31536000, immutable
+/app-8a9fe96025283b2d0f2c.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/webpack-runtime-510125c266b7b4c30cf5.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/274-cc72706784f00de23acf.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/308-8f0f1786d55949f7d0bd.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/108-efbe536c09a7343104e4.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/164-7052dc2d79543a9fd399.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---cache-caches-gatsby-plugin-offline-app-shell-js-79e505794ff037b74c86.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-pages-404-index-jsx-4baabe658fead6970023.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-pages-contact-index-jsx-d69af4eeba23130560d1.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-pages-experience-index-jsx-8ecb38071dbde6cc2f08.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-pages-index-jsx-c128f24a84f15f1cea00.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-pages-posts-index-jsx-ca0e370bc0cd3f02239c.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-pages-research-index-jsx-655fd809d21aaae9b69c.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-pages-resume-jsx-8e7d22a121fe7eef31e8.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-pages-tags-index-jsx-2f0c868cc07e5afd4f3b.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-pages-wakatime-index-jsx-5e565667b6c0bbf66b89.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-templates-post-post-jsx-content-file-path-content-posts-2020-10-02-hello-world-index-mdx-0c87a9bc0d3a1c37d94b.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-templates-post-post-jsx-content-file-path-content-posts-2020-10-10-fxhnb-1-index-md-808a7db3526e60e06966.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-templates-post-post-jsx-content-file-path-content-posts-2020-10-10-fxhnb-2-index-md-137a0818861b116f41e5.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-templates-post-post-jsx-content-file-path-content-posts-2020-10-10-fxhnb-3-index-md-0f87d88f56c132e810dd.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-templates-post-post-jsx-content-file-path-content-research-diretide-index-md-dd87f7d378521f4a3505.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-templates-post-post-jsx-content-file-path-content-research-fxhsb-1-index-md-baeb7bfd392d01d63aef.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-templates-post-post-jsx-content-file-path-content-research-fxhsb-2-index-md-374645006ed6691993b1.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-templates-post-post-jsx-content-file-path-content-research-fxhsb-3-index-md-5177a646b60d7fdc4ba0.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-templates-tags-index-jsx-8055d1ebf3a5f3629032.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---gatsby-theme-academic-src-templates-tags-index-jsx-content-file-path-content-tags-gatsby-index-md-cd037192ad6da03a4685.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/673-5b461a5ab5b07f328aad.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/861-4429a0161578e6a8c7a0.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/framework-ea914181597d1063cbfa.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/287245a4-9bde6207eac3186ab1b1.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/6c97b89d-fd1f985e6017bd3b0ead.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/e971612a-90658cf90cfd70eccfb7.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/14e9c903-f4d033d54d9681cd8f58.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/99908690-a4699cd3f936b2d7816e.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/884b4bb2-64e7cd50ad9ad3b6e874.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/3ff84bc0d8f87ed94dc914f4fe64ee55452469dc-90a861fc7e8a4bedcdc2.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/9c698b5d2e560f955d6e999130aea212ab26cdca-16436c06ddda2f2adf9a.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/2ef6fc153d88728ebd6c63f7bfea21b680cb06d2-d2d2a2e0e5111ed38d0d.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/910bdb71d8281d950d73f4018647aed9c03fb7f5-5047c8ee445618696d09.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/238cf98f9df30b062f63f7402772c9a30884c6c1-8da610ea2f6141fe966a.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/4499c122fc540c952c1d6879a6bce9b4181e27ea-a0d002cd859da56cc863.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/static/*
+  Cache-Control: public, max-age=31536000, immutable
+/sw.js
+  Cache-Control: no-cache
