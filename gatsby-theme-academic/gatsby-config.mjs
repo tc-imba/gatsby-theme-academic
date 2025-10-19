@@ -102,7 +102,7 @@ const config = ({
         },
       },
       {
-        resolve:`gatsby-plugin-netlify`,
+        resolve: 'gatsby-plugin-netlify',
         options: {
           headers: {
             "/public/**/*.html": [

@@ -1,6 +1,5 @@
+import React, { Component, useEffect } from 'react';
 import { Button, Row, Col } from 'rsuite';
-import React, { Component } from 'react';
-import { Document, Page } from 'react-pdf';
 
 import SEO from '../components/Seo';
 
@@ -10,6 +9,8 @@ export default class Resume extends Component {
     this.state = {
       numPages: null,
       pageNumber: 1,
+      Page: null,
+      Document: null,
     };
     this.onDocumentLoadSuccess = this.onDocumentLoadSuccess.bind(this);
   }
@@ -19,7 +20,20 @@ export default class Resume extends Component {
   }
 
   render() {
-    const { pageNumber, numPages } = this.state;
+    useEffect(() => {
+      if (typeof window !== 'undefined') {
+        import('react-pdf').then((module) => {
+          this.setState({
+            Page: module.Page,
+            Document: module.Document,
+          });
+        });
+      }
+    }, []);
+
+    const {
+      pageNumber, numPages, Page, Document,
+    } = this.state;
     const pageToggle = () => {
       if (pageNumber === 1) {
         this.setState({ pageNumber: 2 });
@@ -38,12 +52,14 @@ export default class Resume extends Component {
           in the way of building various web applications."
           path="resume"
         />
+        {this.state.isClient && (
         <Document
           file="../resume.pdf"
           onLoadSuccess={this.onDocumentLoadSuccess}
         >
           <Page pageNumber={pageNumber} />
         </Document>
+        )}
         <Row justify="center" style={{ background: 'lightslategray' }} type="flex">
           <Col span={2}>
             <p>{`Page ${pageNumber} of ${numPages}`}</p>
